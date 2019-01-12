@@ -18,6 +18,7 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     'gatsby-mdx',
+    'gatsby-plugin-layout',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-eslint',
   ],
