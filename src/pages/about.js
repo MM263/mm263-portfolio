@@ -7,12 +7,23 @@ import Info from '../components/styles/InfoLine';
 import LocationIcon from '../images/location.svg';
 import TelegramIcon from '../images/telegram.svg';
 import MailIcon from '../images/mail.svg';
+import selfie from '../images/photo.png';
 
 const AboutHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 1.3rem;
+`;
+
+const Photo = styled.img`
+  height: 15rem;
+  width: 15rem;
+  float: left;
+  margin-right: 3rem;
+  border-image: linear-gradient(to left, #2e98bc 0%, #c66262 100%);
+  border-image-slice: 1;
+  border-width: 3px;
 `;
 
 const AboutPage = () => (
@@ -38,6 +49,7 @@ const AboutPage = () => (
       </Info>
     </AboutHeader>
     <p>
+      <Photo src={selfie} />
       Hi, my name is Tony! I'm a 23 years old frontend developer. I like all
       things involving React and it's ecosystem and I'm always keen on learning
       new things and I love staying on the top of JS trends. I like $#*!posting

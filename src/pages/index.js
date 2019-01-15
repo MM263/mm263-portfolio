@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import BigName from '../components/styles/BigName';
-import Link from '../components/styles/Link';
+import Link, { StyledATag } from '../components/styles/Link';
 import Download from '../images/download.svg';
+import placeholder from '../images/placeholder.jpg';
 
 const MainStyles = styled.div`
   ${BigName} {
@@ -32,10 +33,10 @@ class IndexPage extends Component {
         <Nav>
           <Link to="/about">About Me</Link>
           <Link to="/portfolio">Portfolio</Link>
-          <Link to="/resume">
+          <StyledATag href={placeholder} download>
             <DownloadIcon />
             Resume
-          </Link>
+          </StyledATag>
         </Nav>
       </MainStyles>
     );

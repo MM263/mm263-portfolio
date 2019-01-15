@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Background from '../components/Background';
+import Footer from '../components/Footer';
 import Transition from '../components/Transition';
 import GlobalStyles from '../components/styles/GlobalStyles';
 
@@ -47,6 +48,7 @@ const Layout = ({ children, location }) => (
           <Transition location={location}>{children}</Transition>
           <Background />
         </LayoutStyles>
+        <Footer />
       </>
     )}
   />

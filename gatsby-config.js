@@ -41,11 +41,11 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-react-svg',
     'gatsby-plugin-sharp',
     'gatsby-plugin-offline',
     'gatsby-plugin-layout',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-eslint',
-    'gatsby-plugin-react-svg',
   ],
 };
