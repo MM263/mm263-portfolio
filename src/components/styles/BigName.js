@@ -7,6 +7,7 @@ const BigName = styled.h1`
   margin: 0;
   position: relative;
   text-transform: uppercase;
+  line-height: 1;
   &:after {
     height: 3rem;
     width: 120%;
@@ -17,7 +18,7 @@ const BigName = styled.h1`
     transition: background 0.2s;
     left: calc(0px - 10%);
     z-index: -1;
-    margin-top: 4.9rem;
+    margin-top: 2rem;
     transform: skew(-10deg);
   }
 `;

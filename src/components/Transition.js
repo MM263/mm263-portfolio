@@ -1,26 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {
   TransitionGroup,
   Transition as ReactTransition,
 } from 'react-transition-group';
 
-const timeout = 500;
-
-const getTransitionStyles = {
-  entering: {
-    position: 'absolute',
-    opacity: 0,
-  },
-  entered: {
-    transition: `opacity ${timeout}ms ease-in-out`,
-    opacity: 1,
-  },
-  exiting: {
-    transition: `all ${timeout}ms ease-in-out`,
-    opacity: 0,
-  },
-};
+const TransitionDiv = styled.div`
+  z-index: 1000;
+  position: ${({ status }) =>
+    status === 'entering' ? 'absolute' : 'relative'};
+  transform: ${({ status }) =>
+    status === 'entering' ? 'translateX(-30px)' : 'translateX(0px)'};
+  transition: ${({ status, theme }) =>
+    status === 'entered' ? `transform 0.5s ${theme.ease}` : 'all 0s 0s ease'};
+`;
 
 class Transition extends React.PureComponent {
   static propTypes = {
@@ -32,22 +26,12 @@ class Transition extends React.PureComponent {
     const { children, location } = this.props;
 
     return (
-      <TransitionGroup>
+      <TransitionGroup component={null}>
         <ReactTransition
+          exit={false}
           key={location.pathname}
-          timeout={{
-            enter: timeout,
-            exit: timeout,
-          }}>
-          {status => (
-            <div
-              style={{
-                ...getTransitionStyles[status],
-              }}>
-              {console.log(status)}
-              {children}
-            </div>
-          )}
+          timeout={{ enter: 0 }}>
+          {status => <TransitionDiv status={status}>{children}</TransitionDiv>}
         </ReactTransition>
       </TransitionGroup>
     );

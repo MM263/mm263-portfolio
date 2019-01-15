@@ -1,11 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Background from '../components/Background';
 import Transition from '../components/Transition';
 import GlobalStyles from '../components/styles/GlobalStyles';
+
+import './layouts.css';
+
+const LayoutStyles = styled.div`
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  max-width: 800px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+`;
 
 const Layout = ({ children, location }) => (
   <StaticQuery
@@ -29,8 +43,10 @@ const Layout = ({ children, location }) => (
           <html lang="en" />
         </Helmet>
         <GlobalStyles />
-        <Background />
-        <Transition location={location}>{children}</Transition>
+        <LayoutStyles>
+          <Transition location={location}>{children}</Transition>
+          <Background />
+        </LayoutStyles>
       </>
     )}
   />

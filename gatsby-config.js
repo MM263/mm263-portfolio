@@ -21,5 +21,6 @@ module.exports = {
     'gatsby-plugin-layout',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-eslint',
+    'gatsby-plugin-react-svg',
   ],
 };

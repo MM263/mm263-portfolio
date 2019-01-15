@@ -1,0 +1,36 @@
+/* https://github.com/styled-components/styled-components/issues/1593 🤔 */
+
+@font-face {
+  font-family: 'IBM-Plex';
+  src: url(../fonts/IBMPlexSans-Regular.woff2) format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IBM-Plex';
+  src: url(../fonts/IBMPlexSans-SemiBold.woff2) format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IBM-Plex';
+  src: url(../fonts/IBMPlexSans-Bold.woff2) format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IBM-Plex';
+  src: url(../fonts/IBMPlexSans-BoldItalic.woff2) format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Permanent Marker';
+  src: url(../fonts/PermanentMarker-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
