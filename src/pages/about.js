@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import PageTitle from '../components/PageTitle';
 import Link from '../components/styles/Link';
-import BigName from '../components/styles/BigName';
 import Info from '../components/styles/InfoLine';
 import LocationIcon from '../images/location.svg';
 import TelegramIcon from '../images/telegram.svg';
@@ -17,7 +17,7 @@ const AboutHeader = styled.div`
 
 const AboutPage = () => (
   <div>
-    <BigName>About</BigName>
+    <PageTitle>About</PageTitle>
     <AboutHeader>
       <Info>
         <LocationIcon />
@@ -42,15 +42,16 @@ const AboutPage = () => (
       things involving React and it's ecosystem and I'm always keen on learning
       new things and I love staying on the top of JS trends. I like $#*!posting
       in commits and tuning webpack configs to perfection. Check out my{' '}
-      <Link mini to="/portfolio">
+      <Link mini={1} to="/portfolio">
+        {/* https://github.com/styled-components/styled-components/issues/1198 */}
         portfolio{' '}
       </Link>{' '}
       or download my resume. If you like what you see, let's talk!
     </p>
     <p>
-      Some stuff that I know: ES6, React, Redux, Redux Saga, GraphQL, Apollo
-      Client/Server, Next.js, Gatsby, Styled Components, Node.js, Vue.js, Git,
-      Unix, Jira
+      Dropping some 🔥🔥🔥 keywords: ES6, React, Redux, Redux Saga, GraphQL,
+      Apollo Client/Server, Next.js, Redux Thunk, Gatsby, Styled Components,
+      JSS, Node.js, Vue.js, Git, Unix, Jira
     </p>
   </div>
 );

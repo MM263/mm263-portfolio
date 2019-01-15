@@ -18,7 +18,7 @@ const StyledLink = styled(Link)`
     content: '';
     position: absolute;
     transition: background 0.2s;
-    left: ${({ mini }) => (mini ? 'calc(0px - 3%)' : 'calc(0px - 20%)')};
+    left: ${({ mini }) => (mini ? 'calc(0px - 3%)' : 'calc(0px - 12%)')};
     margin-top: 1.6rem;
     z-index: -1;
   }
