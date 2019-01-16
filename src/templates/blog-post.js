@@ -1,17 +1,20 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark; // eslint-disable-line
+    const {
+      data: { site, mdx }, // eslint-disable-line
+    } = this.props; // eslint-disable-line
     const siteTitle = this.props.data.site.siteMetadata.title; // eslint-disable-line
     const { previous, next } = this.props.pageContext; // eslint-disable-line
 
     return (
       <div>
-        <h1>{post.frontmatter.title}</h1>
-        <p>{post.frontmatter.date}</p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <h1>{mdx.frontmatter.title}</h1>
+        <p>{mdx.frontmatter.date}</p>
+        <MDXRenderer>{mdx.code.body}</MDXRenderer>
         <hr />
 
         <ul
@@ -52,13 +55,13 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
+      }
+      code {
+        body
       }
     }
   }

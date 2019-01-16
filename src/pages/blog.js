@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby';
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props; // eslint-disable-line
-    const posts = data.allMarkdownRemark.edges;
+    const posts = data.allMdx.edges;
 
     return (
       <div>
@@ -36,13 +36,13 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
-          excerpt
           fields {
             slug
           }
+          excerpt
           frontmatter {
             date(formatString: "YYYY-MM-DD")
             title

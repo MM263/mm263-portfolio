@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled, { keyframes } from 'styled-components';
 
@@ -32,11 +33,18 @@ const StyledBackButton = styled(Link)`
 `;
 
 class BackButton extends React.PureComponent {
+  static propTypes = {
+    to: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  };
+
   render() {
+    const { to, text } = this.props;
+
     return (
-      <StyledBackButton to="/">
+      <StyledBackButton to={to}>
         <BackIcon />
-        Home
+        {text}
       </StyledBackButton>
     );
   }

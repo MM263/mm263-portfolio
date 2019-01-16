@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import Transition from '../components/Transition';
 import GlobalStyles from '../components/styles/GlobalStyles';
 
-import './layouts.css';
+import './fonts.css';
 
 const LayoutContainer = styled.div`
   position: relative;

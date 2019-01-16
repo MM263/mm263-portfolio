@@ -28,7 +28,9 @@ const Photo = styled.img`
 
 const AboutPage = () => (
   <div>
-    <PageTitle>About</PageTitle>
+    <PageTitle to="/" text="Home">
+      About
+    </PageTitle>
     <AboutHeader>
       <Info>
         <LocationIcon />
