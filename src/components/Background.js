@@ -9,6 +9,8 @@ const StyledBGContainer = styled.div`
   height: 100vh;
   width: 100vw;
   z-index: 500;
+  top: 0;
+  left: 0;
 `;
 
 class Background extends Component {

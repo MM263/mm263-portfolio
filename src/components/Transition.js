@@ -8,8 +8,6 @@ import {
 
 const TransitionDiv = styled.div`
   z-index: 1000;
-  position: ${({ status }) =>
-    status === 'entering' ? 'absolute' : 'relative'};
   transform: ${({ status }) =>
     status === 'entering' ? 'translateX(-30px)' : 'translateX(0px)'};
   transition: ${({ status, theme }) =>

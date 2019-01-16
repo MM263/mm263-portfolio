@@ -1,14 +1,16 @@
 module.exports = {
   siteMetadata: {
     title: 'Tony Antonov',
+    author: 'Tony Antonov',
+    description: "Tony's site with blog and portfolio",
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'portfolio-tony',
+        short_name: 'portfolio',
         start_url: '/',
         background_color: '#663399',
         theme_color: '#663399',
@@ -19,20 +21,31 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/blog`,
+        path: `${__dirname}/content/blog`,
         name: 'blog',
       },
     },
     {
-      resolve: 'gatsby-mdx',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        extensions: ['mdx', 'md'],
-        gatsbyRemarkPlugins: [
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
           {
-            resolve: 'gatsby-remark-images',
+            resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 800,
-              sizeByPixelDensity: true,
+              maxWidth: 590,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
           `gatsby-remark-prismjs`,
@@ -41,8 +54,10 @@ module.exports = {
         ],
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-feed`,
     'gatsby-plugin-react-svg',
-    'gatsby-plugin-sharp',
     'gatsby-plugin-offline',
     'gatsby-plugin-layout',
     'gatsby-plugin-styled-components',

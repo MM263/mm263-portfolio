@@ -34,7 +34,7 @@ const IconLink = styled.a`
 
 const StyledFooter = styled.div`
   z-index: 750;
-  position: absolute;
+  position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   display: flex;

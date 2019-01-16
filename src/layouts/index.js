@@ -11,15 +11,18 @@ import GlobalStyles from '../components/styles/GlobalStyles';
 
 import './layouts.css';
 
-const LayoutStyles = styled.div`
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  max-width: 800px;
-  align-items: center;
-  justify-content: center;
+const LayoutContainer = styled.div`
   position: relative;
+  height: 100vh;
+  display: flex;
+  max-width: 800px;
   margin: 0 auto;
+`;
+
+const ContentContainer = styled.div`
+  position: relative;
+  z-index: 1000;
+  margin: auto;
 `;
 
 const Layout = ({ children, location }) => (
@@ -44,10 +47,12 @@ const Layout = ({ children, location }) => (
           <html lang="en" />
         </Helmet>
         <GlobalStyles />
-        <LayoutStyles>
-          <Transition location={location}>{children}</Transition>
+        <LayoutContainer>
+          <ContentContainer>
+            <Transition location={location}>{children}</Transition>
+          </ContentContainer>
           <Background />
-        </LayoutStyles>
+        </LayoutContainer>
         <Footer />
       </>
     )}
