@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
+import theme from '../components/styles/theme';
 
 import Background from '../components/Background';
 import Footer from '../components/Footer';
@@ -47,14 +48,16 @@ const Layout = ({ children, location }) => (
           ]}>
           <html lang="en" />
         </Helmet>
-        <GlobalStyles />
-        <LayoutContainer>
-          <ContentContainer>
-            <Transition location={location}>{children}</Transition>
-          </ContentContainer>
-          <Background />
-        </LayoutContainer>
-        <Footer />
+        <ThemeProvider theme={theme}>
+          <LayoutContainer>
+            <GlobalStyles />
+            <ContentContainer>
+              <Transition location={location}>{children}</Transition>
+            </ContentContainer>
+            <Background />
+            <Footer />
+          </LayoutContainer>
+        </ThemeProvider>
       </>
     )}
   />

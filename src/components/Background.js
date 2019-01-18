@@ -15,7 +15,7 @@ const StyledBGContainer = styled.div`
 
 class Background extends Component {
   state = {
-    fun: false,
+    fun: true,
   };
 
   handleDisableFun = () => {

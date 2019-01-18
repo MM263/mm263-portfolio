@@ -16,7 +16,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.5rem;
     line-height: 2;
     font-family: 'Asap';
-    color: ${({ theme }) => theme.black};
+    color: #393939;
   }
 `;
 
