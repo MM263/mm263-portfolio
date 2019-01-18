@@ -54,7 +54,7 @@ class Particle {
   }
 }
 
-class Background extends Component {
+class Canvas extends Component {
   constructor(props) {
     super(props);
 
@@ -70,8 +70,6 @@ class Background extends Component {
 
     this.canvasRef = React.createRef();
     this.canvas = this.canvasRef.current;
-    this.image = new Image();
-    this.image.src = thinking;
     this.particles = [];
     this.pool = [];
     this.MAX_PARTICLES = 220;
@@ -79,6 +77,8 @@ class Background extends Component {
 
   componentDidMount() {
     this.rAF = requestAnimationFrame(this.updateAnimationState);
+    this.image = new Image();
+    this.image.src = thinking;
 
     this.image.onload = () => {
       this.setState({ loaded: true });
@@ -161,4 +161,4 @@ class Background extends Component {
   }
 }
 
-export default Background;
+export default Canvas;
