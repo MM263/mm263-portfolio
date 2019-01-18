@@ -43,7 +43,8 @@ const StyledFooter = styled.div`
 const LinkButton = styled(Link)`
   color: ${({ theme }) => theme.black};
   font-family: 'Permanent Marker';
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
   text-decoration: none;
   border-radius: 15px;
   padding: 0.1rem 1rem;

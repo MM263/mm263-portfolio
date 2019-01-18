@@ -1,6 +1,40 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import styled from 'styled-components';
+
+import Bio from '../components/Bio';
+import PageTitle from '../components/PageTitle';
+
+const BlogContainer = styled.div`
+  margin-top: 2rem;
+  h1 {
+    font-size: 4rem;
+    margin-top: 2rem;
+    &:after {
+      margin-top: 1rem;
+      height: 2rem;
+    }
+  }
+  & > div:first-child {
+    a {
+      top: 0.5rem;
+    }
+  }
+`;
+
+const PostFooter = styled.div`
+  margin: 10rem 0 7rem 0;
+  display: flex;
+  flex-direction: column;
+
+  .post-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4rem;
+  }
+`;
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -11,36 +45,28 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext; // eslint-disable-line
 
     return (
-      <div>
-        <h1>{mdx.frontmatter.title}</h1>
+      <BlogContainer>
+        <PageTitle to="/blog" text="Back To Blog">
+          {mdx.frontmatter.title}
+        </PageTitle>
         <p>{mdx.frontmatter.date}</p>
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
-        <hr />
-
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}>
-          <li>
+        <PostFooter>
+          <Bio />
+          <div className="post-links">
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
-          </li>
-          <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →
               </Link>
             )}
-          </li>
-        </ul>
-      </div>
+          </div>
+        </PostFooter>
+      </BlogContainer>
     );
   }
 }
