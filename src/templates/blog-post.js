@@ -4,21 +4,30 @@ import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import styled from 'styled-components';
 
 import Bio from '../components/Bio';
-import PageTitle from '../components/PageTitle';
+import BigName from '../components/styles/BigName';
 
 const BlogContainer = styled.div`
-  margin-top: 2rem;
-  h1 {
+  margin: 2rem 2rem 0 2rem;
+
+  & > h1:first-child {
     font-size: 4rem;
     margin-top: 2rem;
     &:after {
       margin-top: 1rem;
       height: 2rem;
     }
-  }
-  & > div:first-child {
     a {
       top: 0.5rem;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    & > h1:first-child {
+      font-size: 2.8rem;
+      &:after {
+        width: 100%;
+        left: 0;
+      }
     }
   }
 `;
@@ -46,9 +55,7 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <BlogContainer>
-        <PageTitle to="/blog" text="Back To Blog">
-          {mdx.frontmatter.title}
-        </PageTitle>
+        <BigName>{mdx.frontmatter.title}</BigName>
         <p>{mdx.frontmatter.date}</p>
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
         <PostFooter>
@@ -84,7 +91,7 @@ export const pageQuery = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
-        date(formatString: "YYYY-MM-DD")
+        date(formatString: "MMM DD, YYYY")
       }
       code {
         body

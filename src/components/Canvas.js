@@ -8,6 +8,9 @@ import { random } from '../utils';
 const StyledCanvas = styled.canvas`
   height: 100vh;
   width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 class Particle {
@@ -65,6 +68,7 @@ class Canvas extends Component {
     this.updateAnimationState = this.updateAnimationState.bind(this);
     this.paint = this.paint.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleTouchMove = this.handleTouchMove.bind(this);
     this.createParticle = this.createParticle.bind(this);
     this.createParticle = _.debounce(this.createParticle, 16);
 
@@ -149,6 +153,12 @@ class Canvas extends Component {
     this.createParticle(clientX, clientY);
   }
 
+  handleTouchMove(e) {
+    const { clientX, clientY } = e.changedTouches[0];
+
+    this.createParticle(clientX, clientY);
+  }
+
   updateAnimationState() {
     this.paint();
     this.rAF = requestAnimationFrame(this.updateAnimationState);
@@ -156,7 +166,11 @@ class Canvas extends Component {
 
   render() {
     return (
-      <StyledCanvas onMouseMove={this.handleMouseMove} ref={this.canvasRef} />
+      <StyledCanvas
+        onTouchMove={this.handleTouchMove}
+        onMouseMove={this.handleMouseMove}
+        ref={this.canvasRef}
+      />
     );
   }
 }

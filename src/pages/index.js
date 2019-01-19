@@ -10,6 +10,24 @@ const MainStyles = styled.div`
   ${BigName} {
     margin-bottom: 2rem;
   }
+
+  @media only screen and (max-width: 600px) {
+    ${Link}, ${StyledATag} {
+      font-size: 1.2rem;
+      &:after {
+        height: 0.8rem;
+        margin-top: 1.2rem;
+      }
+    }
+    ${BigName} {
+      font-size: 3.7rem;
+      margin-bottom: 2rem;
+      &:after {
+        height: 1.7rem;
+        margin-top: 1.2rem;
+      }
+    }
+  }
 `;
 
 const Nav = styled.nav`
@@ -23,6 +41,12 @@ const DownloadIcon = styled(Download)`
   margin: 0 5px -3px 0;
   color: ${({ theme }) => theme.black};
   transform: skew(-10deg);
+
+  @media only screen and (max-width: 600px) {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin: 0 5px -2px 0;
+  }
 `;
 
 class IndexPage extends Component {

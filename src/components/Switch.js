@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledFunSwitch = styled.div`
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
   display: flex;
   cursor: pointer;
   user-select: none;
+  margin-left: 3rem;
   .fun-label {
     position: absolute;
     top: 0;

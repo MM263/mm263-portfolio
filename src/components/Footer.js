@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 
+import Switch from './Switch';
 import GithubIcon from '../images/github.svg';
 import LinkedInIcon from '../images/linkedin.svg';
 
@@ -33,11 +35,17 @@ const IconLink = styled.a`
 `;
 
 const StyledFooter = styled.div`
-  z-index: 750;
   position: fixed;
   bottom: 1.5rem;
-  right: 1.5rem;
+  left: 0;
+  width: 100vw;
+  z-index: 1500;
   display: flex;
+  justify-content: space-between;
+  padding: 0 2rem 1rem 2rem;
+  & > div {
+    display: flex;
+  }
 `;
 
 const LinkButton = styled(Link)`
@@ -57,22 +65,30 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const Footer = () => (
+const Footer = ({ disableFun, fun }) => (
   <StyledFooter>
-    <LinkButton to="/blog">Blog</LinkButton>
-    <IconLink
-      href="https://github.com/mm263"
-      target="_blank"
-      rel="noopener noreferrer">
-      <Github />
-    </IconLink>
-    <IconLink
-      href="https://linkedin.com/in/tony-antonov-778564178"
-      target="_blank"
-      rel="noopener noreferrer">
-      <LinkedIn />
-    </IconLink>
+    <Switch value={fun} onChange={disableFun} />
+    <div>
+      <LinkButton to="/blog">Blog</LinkButton>
+      <IconLink
+        href="https://github.com/mm263"
+        target="_blank"
+        rel="noopener noreferrer">
+        <Github />
+      </IconLink>
+      <IconLink
+        href="https://linkedin.com/in/tony-antonov-778564178"
+        target="_blank"
+        rel="noopener noreferrer">
+        <LinkedIn />
+      </IconLink>
+    </div>
   </StyledFooter>
 );
+
+Footer.propTypes = {
+  disableFun: PropTypes.func.isRequired,
+  fun: PropTypes.bool.isRequired,
+};
 
 export default Footer;

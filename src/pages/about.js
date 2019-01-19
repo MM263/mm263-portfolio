@@ -9,11 +9,46 @@ import TelegramIcon from '../images/telegram.svg';
 import MailIcon from '../images/mail.svg';
 import selfie from '../images/photo.png';
 
+const AboutStyles = styled.div`
+  margin: 0 2.3rem;
+
+  @media only screen and (max-width: 920px) {
+    & > div:first-child {
+      a {
+        top: 0;
+      }
+    }
+    h1 {
+      font-size: 3rem;
+      &:after {
+        margin-top: 0.9rem;
+        height: 1.5rem;
+        width: 108%;
+        left: calc(0px - 3%);
+      }
+    }
+  }
+
+  @media only screen and (max-width: 340px) {
+    p {
+      font-size: 1.2rem;
+    }
+  }
+`;
+
 const AboutHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 1.3rem;
+  flex-wrap: wrap;
+
+  @media only screen and (max-width: 920px) {
+    margin-top: 0.4rem;
+    p {
+      margin: 0;
+    }
+  }
 `;
 
 const Photo = styled.img`
@@ -21,13 +56,17 @@ const Photo = styled.img`
   width: 15rem;
   float: left;
   margin-right: 3rem;
-  border-image: linear-gradient(to left, #2e98bc 0%, #c66262 100%);
-  border-image-slice: 1;
-  border-width: 3px;
+
+  @media only screen and (max-width: 600px) {
+    height: 10rem;
+    width: 10rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const AboutPage = () => (
-  <div>
+  <AboutStyles>
     <PageTitle to="/" text="Home">
       About
     </PageTitle>
@@ -67,7 +106,7 @@ const AboutPage = () => (
       Apollo Client/Server, Next.js, Redux Thunk, Gatsby, Styled Components,
       JSS, Node.js, Vue.js, Git, Unix, Jira
     </p>
-  </div>
+  </AboutStyles>
 );
 
 export default AboutPage;

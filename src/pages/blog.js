@@ -3,11 +3,10 @@ import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Bio from '../components/Bio';
-import BackButton from '../components/BackButton';
 
 const BlogContainer = styled.div`
-  height: 100%;
-  width: 100%;
+  margin: 0 2.3rem;
+
   & > div:not(:last-child) {
     margin-bottom: 3rem;
   }
@@ -18,6 +17,12 @@ const BlogContainer = styled.div`
     margin-bottom: 1rem;
     font-family: 'Permanent Marker';
     font-size: 4rem;
+  }
+
+  @media only screen and (max-width: 400px) {
+    h1 {
+      font-size: 3rem;
+    }
   }
 `;
 
@@ -52,24 +57,14 @@ const PostBody = styled.div`
       transform: skew(-10deg);
     }
   }
-`;
 
-const BlogHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  a {
-    &:after {
-      height: 1.2rem;
-      width: 1.2rem;
-      background-color: ${({ theme }) => theme.salmon};
-      background-image: url("${({ theme }) => theme.clouds}");
-      content: '';
-      position: absolute;
-      left: 0.6rem;
-      z-index: -1;
-      margin-top: 1.1rem;
-      border-radius: 50%;
+  @media only screen and (max-width: 800px) {
+    margin-bottom: 7rem;
+    h3 {
+      &:after {
+        left: calc(0px + 5%);
+        width: 90%;
+      }
     }
   }
 `;
@@ -82,10 +77,8 @@ class BlogIndex extends React.Component {
     return (
       <BlogContainer>
         <h1>Reacting to React</h1>
-        <BlogHeader>
-          <Bio />
-          <BackButton to="/" text="home" positioned />
-        </BlogHeader>
+        <Bio />
+
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
@@ -122,7 +115,7 @@ export const pageQuery = graphql`
           }
           excerpt
           frontmatter {
-            date(formatString: "YYYY-MM-DD")
+            date(formatString: "MMM DD, YYYY")
             title
           }
         }
