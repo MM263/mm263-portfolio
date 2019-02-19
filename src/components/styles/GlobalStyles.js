@@ -15,8 +15,11 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-size: 1.5rem;
     line-height: 2;
-    font-family: 'Asap';
-    color: #393939;
+    font-family: 'Asap', sans-serif;
+    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.bg};
+    transition: color 0.5s ${({ theme }) =>
+      theme.ease}, background-color 0.5s ${({ theme }) => theme.ease};
   }
 `;
 

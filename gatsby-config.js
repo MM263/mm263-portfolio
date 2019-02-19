@@ -16,7 +16,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/thinking.png`,
+        icon: `static/thinking.png`,
       },
     },
     {
@@ -52,11 +52,24 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Permanent Marker`,
+          },
+          {
+            family: `Asap`,
+            variants: [`400`, `500`, `600`, `700`],
+          },
+        ],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     // `gatsby-plugin-feed`,
     `gatsby-plugin-react-svg`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-layout`,
     `gatsby-plugin-eslint`,
   ],

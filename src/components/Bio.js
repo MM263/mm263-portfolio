@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import photo from '../images/photo.png';
+import photo from '../../static/photo.png';
 
 const BioContainer = styled.div`
   display: flex;

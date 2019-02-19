@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import _ from 'lodash';
+import debounce from 'lodash.debounce';
 
-import thinking from '../images/thinking.png';
+import thinking from '../../static/thinking.png';
 import { random } from '../utils';
 
 const StyledCanvas = styled.canvas`
@@ -70,7 +70,7 @@ class Canvas extends Component {
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleTouchMove = this.handleTouchMove.bind(this);
     this.createParticle = this.createParticle.bind(this);
-    this.createParticle = _.debounce(this.createParticle, 16);
+    this.createParticle = debounce(this.createParticle, 16);
 
     this.canvasRef = React.createRef();
     this.canvas = this.canvasRef.current;

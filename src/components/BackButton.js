@@ -16,7 +16,8 @@ to {
 `;
 
 const StyledBackButton = styled(Link)`
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.text};
+  transition: color 0.5s ${({ theme }) => theme.ease};
   font-family: 'Permanent Marker';
   font-size: 2rem;
   position: absolute;

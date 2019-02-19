@@ -1,46 +1,82 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { Link as GatsbyLink, graphql } from 'gatsby';
+
+import Blog from '../components/Blog';
 
 import BigName from '../components/styles/BigName';
-import Link, { StyledATag } from '../components/styles/Link';
+import Contacts from '../components/Contacts';
+import photo from '../../static/photo.png';
 import Download from '../images/download.svg';
-import placeholder from '../images/placeholder.jpg';
+import resume from '../../static/antonov-anton-resume.pdf';
 
-const MainStyles = styled.div`
-  ${BigName} {
-    margin-bottom: 2rem;
-  }
+const LinkStyles = css`
+  font-weight: 700;
+  color: ${({ theme }) => theme.text};
+`;
 
-  @media only screen and (max-width: 600px) {
-    ${Link}, ${StyledATag} {
-      font-size: 1.2rem;
-      &:after {
-        height: 0.8rem;
-        margin-top: 1.2rem;
+const MainContainer = styled.div`
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const MainInfo = styled.div`
+  margin: 0 2.3rem;
+
+  @media only screen and (max-width: 920px) {
+    & > div:first-child {
+      a {
+        top: 0;
       }
     }
-    ${BigName} {
-      font-size: 3.7rem;
-      margin-bottom: 2rem;
+    h1 {
+      font-size: 3rem;
       &:after {
-        height: 1.7rem;
-        margin-top: 1.2rem;
+        margin-top: 0.9rem;
+        height: 1.5rem;
+        width: 108%;
+        left: calc(0px - 3%);
       }
+    }
+  }
+
+  @media only screen and (max-width: 340px) {
+    p {
+      font-size: 1.2rem;
     }
   }
 `;
 
-const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
+const Photo = styled.img`
+  height: 13rem;
+  width: 13rem;
+  float: left;
+  margin-right: 3rem;
+
+  @media only screen and (max-width: 600px) {
+    height: 10rem;
+    width: 10rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+  }
+`;
+
+const PortfolioLink = styled(GatsbyLink)`
+  ${LinkStyles}
+`;
+
+const ResumeLink = styled.a`
+  ${LinkStyles}
 `;
 
 const DownloadIcon = styled(Download)`
-  width: 1.8rem;
-  height: 1.8rem;
-  margin: 0 5px -3px 0;
-  color: ${({ theme }) => theme.black};
-  transform: skew(-10deg);
+  width: 1.4rem;
+  height: 1.4rem;
+  margin: 0 2px -3px 4px;
+  color: ${({ theme }) => theme.text};
 
   @media only screen and (max-width: 600px) {
     width: 1.3rem;
@@ -49,22 +85,61 @@ const DownloadIcon = styled(Download)`
   }
 `;
 
-class IndexPage extends Component {
-  render() {
-    return (
-      <MainStyles>
+const Index = ({ data }) => (
+  <>
+    <MainContainer>
+      <MainInfo>
         <BigName>Tony Antonov</BigName>
-        <Nav>
-          <Link to="/about">About Me</Link>
-          <Link to="/portfolio">Portfolio</Link>
-          <StyledATag href={placeholder} download>
+        <Contacts />
+        <p>
+          <Photo src={photo} />
+          Hi, my name is Tony! I'm a self-taught frontend developer from
+          Saskatoon, SK.
+        </p>
+        <p>
+          I like all things involving React and it's ecosystem and I love
+          staying on top of JS trends. Check out my{' '}
+          <PortfolioLink to="/portfolio">portfolio</PortfolioLink> or download
+          my{' '}
+          <ResumeLink href={resume} download>
             <DownloadIcon />
-            Resume
-          </StyledATag>
-        </Nav>
-      </MainStyles>
-    );
-  }
-}
+            resume
+          </ResumeLink>
+          . If you like what you see, I am currently looking for a job. Let's
+          talk!
+        </p>
+      </MainInfo>
+    </MainContainer>
+    <Blog data={data} />
+  </>
+);
 
-export default IndexPage;
+Index.propTypes = {
+  data: PropTypes.object,
+};
+
+export default Index;
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          excerpt
+          frontmatter {
+            date(formatString: "MMM DD, YYYY")
+            title
+          }
+        }
+      }
+    }
+  }
+`;

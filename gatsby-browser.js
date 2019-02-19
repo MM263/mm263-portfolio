@@ -1,3 +1,5 @@
+import './src/layouts/prism.css';
+
 import React from 'react';
 import { MDXProvider } from '@mdx-js/tag';
 

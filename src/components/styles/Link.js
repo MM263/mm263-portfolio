@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 const styles = css`
   font-weight: 900;
-  color: ${props => props.theme.black};
+  color: ${props => props.theme.text};
   text-decoration: none;
   position: relative;
   font-size: ${({ mini }) => (mini ? '1.5rem' : '1.6rem')};
@@ -13,8 +13,7 @@ const styles = css`
   &:after {
     height: ${({ mini }) => (mini ? '0.8rem' : '1.4rem')};
     width: ${({ mini }) => (mini ? '101%' : '120%')};
-    background-color: ${({ theme }) => theme.salmon};
-    background-image: url("${({ theme }) => theme.clouds}");
+    background: ${({ theme }) => theme.accentBG};
     content: '';
     position: absolute;
     transition: background 0.2s;

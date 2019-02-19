@@ -5,7 +5,6 @@ import { Link } from 'gatsby';
 
 import Switch from './Switch';
 import GithubIcon from '../images/github.svg';
-import LinkedInIcon from '../images/linkedin.svg';
 
 const styledIcon = css`
   width: 2.5rem;
@@ -13,82 +12,97 @@ const styledIcon = css`
   padding: 0.4rem;
   border-radius: 50%;
   margin-left: 1rem;
-  background-color: ${({ theme }) => theme.salmon};
-  background-image: url("${({ theme }) => theme.clouds}");
-  transition: background 0.2s;
+  background: ${({ theme }) => theme.accentBG};
+  transition: background 0.2s ${({ theme }) => theme.ease};
   &:hover {
-    background-color: ${({ theme }) => theme.salmoner}; 
+    background-color: ${({ theme }) => theme.salmoner};
   }
 `;
 
 const Github = styled(GithubIcon)`
   ${styledIcon}
 `;
-const LinkedIn = styled(LinkedInIcon)`
-  ${styledIcon}
-`;
 
 const IconLink = styled.a`
-  color: ${({ theme }) => theme.black};
+  color: #393939;
   text-decoration: none;
   display: flex;
 `;
 
 const StyledFooter = styled.div`
   position: fixed;
-  bottom: 1.5rem;
-  left: 0;
-  width: 100vw;
+  top: 0;
+  right: 0;
+  height: 100vh;
   z-index: 1500;
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: space-between;
-  padding: 0 2rem 1rem 2rem;
+  padding: 1.5rem;
+
   & > div {
     display: flex;
+    flex-direction: column;
+
+    & > div:first-child {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
   }
 `;
 
 const LinkButton = styled(Link)`
-  color: ${({ theme }) => theme.black};
+  color: #393939;
   font-family: 'Permanent Marker';
   font-size: 1.5rem;
   line-height: 1.5;
   text-decoration: none;
   border-radius: 15px;
   padding: 0.1rem 1rem;
-  background-color: ${({ theme }) => theme.salmon};
-  background-image: url("${({ theme }) => theme.clouds}");
+  background: ${({ theme }) => theme.accentBG};
   transition: background 0.2s;
   height: auto;
   &:hover {
-    background-color: ${({ theme }) => theme.salmoner}; 
+    background-color: ${({ theme }) => theme.salmoner};
   }
 `;
 
-const Footer = ({ disableFun, fun }) => (
+const Footer = ({ toggleFun, toggleNight, night, fun }) => (
   <StyledFooter>
-    <Switch value={fun} onChange={disableFun} />
     <div>
-      <LinkButton to="/blog">Blog</LinkButton>
-      <IconLink
-        href="https://github.com/mm263"
-        target="_blank"
-        rel="noopener noreferrer">
-        <Github />
-      </IconLink>
-      <IconLink
-        href="https://linkedin.com/in/tony-antonov-778564178"
-        target="_blank"
-        rel="noopener noreferrer">
-        <LinkedIn />
-      </IconLink>
+      <Switch label="🤔" name="fun" value={fun} onChange={toggleFun} />
+      <Switch label="🌛" name="night" value={night} onChange={toggleNight} />
     </div>
+    <nav>
+      <ul>
+        <li>
+          <LinkButton to="/portfolio">Portfolio</LinkButton>
+        </li>
+        <li>
+          <IconLink
+            href="https://github.com/mm263"
+            target="_blank"
+            rel="noopener noreferrer">
+            <Github aria-label="Github" />
+          </IconLink>
+        </li>
+      </ul>
+    </nav>
   </StyledFooter>
 );
 
 Footer.propTypes = {
-  disableFun: PropTypes.func.isRequired,
+  toggleFun: PropTypes.func.isRequired,
+  toggleNight: PropTypes.func.isRequired,
   fun: PropTypes.bool.isRequired,
+  night: PropTypes.bool.isRequired,
 };
 
 export default Footer;

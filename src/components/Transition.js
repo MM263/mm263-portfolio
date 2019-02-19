@@ -12,6 +12,11 @@ const TransitionDiv = styled.div`
     status === 'entering' ? 'translateX(-30px)' : 'translateX(0px)'};
   transition: ${({ status, theme }) =>
     status === 'entered' ? `transform 0.5s ${theme.ease}` : 'all 0s 0s ease'};
+
+  @media only screen and (max-width: 600px) {
+    transition-property: none;
+    transform: translateX(0px);
+  }
 `;
 
 class Transition extends React.PureComponent {

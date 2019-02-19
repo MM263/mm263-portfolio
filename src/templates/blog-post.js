@@ -9,15 +9,31 @@ import BigName from '../components/styles/BigName';
 const BlogContainer = styled.div`
   margin: 2rem 2rem 0 2rem;
 
+  .post-date {
+    margin: 1rem 1rem 1.3rem 0;
+    font-style: italic;
+    font-weight: 900;
+  }
+
   & > h1:first-child {
     font-size: 4rem;
     margin-top: 2rem;
     &:after {
-      margin-top: 1rem;
-      height: 2rem;
+      transition: height 0.5s ${({ theme }) => theme.ease},
+        margin-top 0.5s ${({ theme }) => theme.ease};
+      margin-top: ${({ theme }) => (theme.night ? '0' : '1rem')};
+      height: ${({ theme }) => (theme.night ? '4rem' : '2rem')};
     }
     a {
       top: 0.5rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+      &${BigName} {
+        text-align: left;
+
+        font-size: 2.3rem;
+      }
     }
   }
 
@@ -56,7 +72,7 @@ class BlogPostTemplate extends React.Component {
     return (
       <BlogContainer>
         <BigName>{mdx.frontmatter.title}</BigName>
-        <p>{mdx.frontmatter.date}</p>
+        <p className="post-date">{mdx.frontmatter.date}</p>
         <MDXRenderer>{mdx.code.body}</MDXRenderer>
         <PostFooter>
           <Bio />

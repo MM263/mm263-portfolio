@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const StyledFunSwitch = styled.div`
+const StyledSwitch = styled.div`
   display: flex;
   cursor: pointer;
   user-select: none;
   margin-left: 3rem;
-  .fun-label {
+  .label {
     position: absolute;
     top: 0;
     left: -30px;
@@ -26,6 +26,7 @@ const StyledFunSwitch = styled.div`
     line-height: 1;
     top: 8px;
     font-family: 'Permanent Marker';
+    color: #393939;
   }
   .on-label {
     right: 11px;
@@ -33,18 +34,20 @@ const StyledFunSwitch = styled.div`
   .off-label {
     left: 9px;
   }
-  .fun-toggle-label {
+  .toggle-label {
     position: relative;
     width: 70px;
     height: 26px;
     border-radius: 5px;
-    background-color: ${({ theme }) => theme.bg};
+    background-color: #f5f5f5;
+
+    & > input {
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
   }
-  .fun-toggle-label > input {
-    width: 0;
-    height: 0;
-    opacity: 0;
-  }
+
   .switch {
     height: 2.6rem;
     width: 3.5rem;
@@ -59,12 +62,15 @@ const StyledFunSwitch = styled.div`
     transform: ${({ checked }) =>
       checked ? 'translateX(35px)' : 'translateX(0px)'};
     transition: all 0.5s ${({ theme }) => theme.ease};
+    /* TODO: remove transition all  */
   }
 `;
 
-class FunSwitch extends React.PureComponent {
+class Switch extends React.PureComponent {
   static propTypes = {
     value: PropTypes.bool.isRequired,
+    label: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   };
 
@@ -75,26 +81,26 @@ class FunSwitch extends React.PureComponent {
   };
 
   render() {
-    const { value } = this.props;
+    const { value, label, name } = this.props;
 
     return (
-      <StyledFunSwitch checked={value}>
-        <label className="fun-toggle-label" htmlFor="fun-toggle">
+      <StyledSwitch checked={value}>
+        <label className="toggle-label" htmlFor={`${name}-toggle`}>
           <input
             onChange={this.handleToggle}
             type="checkbox"
-            id="fun-toggle"
+            id={`${name}-toggle`}
             value={value}
             aria-checked={value}
           />
-          <span className="fun-label">🤔</span>
+          <span className="label">{label}</span>
           <span className="off-label">Off</span>
           <span className="on-label">On</span>
           <div className="switch" />
         </label>
-      </StyledFunSwitch>
+      </StyledSwitch>
     );
   }
 }
 
-export default FunSwitch;
+export default Switch;
