@@ -9,7 +9,6 @@ const styles = css`
   font-size: ${({ mini }) => (mini ? '1.5rem' : '1.6rem')};
   font-style: italic;
   text-transform: ${({ mini }) => (mini ? 'none' : 'uppercase')};
-  ${({ mini }) => mini && 'font-family: "Permanent Marker";'}
   &:after {
     height: ${({ mini }) => (mini ? '0.8rem' : '1.4rem')};
     width: ${({ mini }) => (mini ? '101%' : '120%')};

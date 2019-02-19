@@ -58,6 +58,7 @@ module.exports = {
         fonts: [
           {
             family: `Permanent Marker`,
+            variants: [`400`],
           },
           {
             family: `Asap`,
