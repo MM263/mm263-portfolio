@@ -69,6 +69,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-offline`,
     // `gatsby-plugin-feed`,
     `gatsby-plugin-react-svg`,
     `gatsby-plugin-layout`,
