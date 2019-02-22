@@ -48,6 +48,7 @@ const ContentContainer = styled.div`
   position: relative;
   z-index: 1000;
   margin: auto;
+  max-width: 100%;
 `;
 
 const Layout = ({ location, children }) => {

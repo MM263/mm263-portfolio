@@ -29,21 +29,13 @@ module.exports = {
     {
       resolve: `gatsby-mdx`,
       options: {
-        extensions: [`.mdx`, `.md`],
+        extensions: [`.mdx`],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
               sizeByPixelDensity: true,
-            },
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: `language-`,
-              inlineCodeMarker: null,
-              aliases: {},
             },
           },
           {
@@ -63,6 +55,10 @@ module.exports = {
           {
             family: `Asap`,
             variants: [`400`, `500`, `600`, `700`],
+          },
+          {
+            family: `Consolas`,
+            variants: [`400`, `700`],
           },
         ],
       },

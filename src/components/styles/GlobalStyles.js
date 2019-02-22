@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-size: 1.5rem;
     line-height: 2;
-    font-family: 'Asap', 'Permanent Marker', sans-serif;
+    font-family: 'Asap', sans-serif;
     color: ${({ theme }) => theme.text};
     background-color: ${({ theme }) => theme.bg};
     transition: color 0.5s ${({ theme }) =>

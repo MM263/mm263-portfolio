@@ -29,11 +29,10 @@ const IconLink = styled.a`
   display: flex;
 `;
 
-const StyledFooter = styled.div`
+const StyledFooter = styled.footer`
   position: fixed;
-  top: 0;
+  bottom: 0;
   right: 0;
-  height: 100vh;
   z-index: 1500;
   display: flex;
   flex-direction: column;
@@ -44,6 +43,7 @@ const StyledFooter = styled.div`
   & > div {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1.5rem;
 
     & > div:first-child {
       margin-bottom: 1.5rem;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-const BlogContainer = styled.div`
+const BlogContainer = styled.main`
   margin: 0 2.3rem 4rem 2.3rem;
 
   & > div:not(:last-child) {
@@ -24,7 +24,7 @@ const BlogContainer = styled.div`
   }
 `;
 
-const PostBody = styled.div`
+const PostBody = styled.article`
   .post-date {
     margin: 1rem 1rem 1.3rem 0;
     font-style: italic;
@@ -62,6 +62,7 @@ const PostHeader = styled.div`
     font-size: 2.7rem;
     display: block;
     text-transform: uppercase;
+    text-decoration: none;
   }
 
   .separator {
@@ -86,11 +87,6 @@ const PostHeader = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: ${({ theme }) => theme.text};
-`;
-
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props; // eslint-disable-line
@@ -103,13 +99,13 @@ class BlogIndex extends React.Component {
 
           return (
             <PostBody key={node.fields.slug}>
-              <StyledLink to={node.fields.slug}>
-                <PostHeader>
-                  <h3>{title}</h3>
-                  <div className="separator" />
-                  <p className="post-date">{node.frontmatter.date}</p>
-                </PostHeader>
-              </StyledLink>
+              <PostHeader>
+                <h3>
+                  <Link to={node.fields.slug}>{title}</Link>
+                </h3>
+                <div className="separator" />
+                <small className="post-date">{node.frontmatter.date}</small>
+              </PostHeader>
               <p>{node.excerpt}</p>
             </PostBody>
           );

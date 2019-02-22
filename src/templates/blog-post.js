@@ -6,8 +6,21 @@ import styled from 'styled-components';
 import Bio from '../components/Bio';
 import BigName from '../components/styles/BigName';
 
-const BlogContainer = styled.div`
+const BlogContainer = styled.main`
   margin: 2rem 2rem 0 2rem;
+
+  header {
+    margin-bottom: 4rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 5rem;
+  }
 
   .post-date {
     margin: 1rem 1rem 1.3rem 0;
@@ -15,9 +28,10 @@ const BlogContainer = styled.div`
     font-weight: 900;
   }
 
-  & > h1:first-child {
+  .post-title {
     font-size: 4rem;
-    margin-top: 2rem;
+    margin: 2rem 0;
+    text-align: left;
     &:after {
       transition: height 0.5s ${({ theme }) => theme.ease},
         margin-top 0.5s ${({ theme }) => theme.ease};
@@ -29,7 +43,7 @@ const BlogContainer = styled.div`
     }
 
     @media only screen and (max-width: 600px) {
-      &${BigName} {
+      .post-title {
         text-align: left;
 
         font-size: 2.3rem;
@@ -38,7 +52,7 @@ const BlogContainer = styled.div`
   }
 
   @media only screen and (max-width: 800px) {
-    & > h1:first-child {
+    .post-title {
       font-size: 2.8rem;
       &:after {
         width: 100%;
@@ -48,7 +62,7 @@ const BlogContainer = styled.div`
   }
 `;
 
-const PostFooter = styled.div`
+const PostFooter = styled.footer`
   margin: 10rem 0 7rem 0;
   display: flex;
   flex-direction: column;
@@ -61,6 +75,10 @@ const PostFooter = styled.div`
   }
 `;
 
+const StyledArticle = styled.article`
+  max-width: 100%;
+`;
+
 class BlogPostTemplate extends React.Component {
   render() {
     const {
@@ -71,9 +89,13 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <BlogContainer>
-        <BigName>{mdx.frontmatter.title}</BigName>
-        <p className="post-date">{mdx.frontmatter.date}</p>
-        <MDXRenderer>{mdx.code.body}</MDXRenderer>
+        <header>
+          <BigName className="post-title">{mdx.frontmatter.title}</BigName>
+          <small className="post-date">{mdx.frontmatter.date}</small>
+        </header>
+        <StyledArticle>
+          <MDXRenderer>{mdx.code.body}</MDXRenderer>
+        </StyledArticle>
         <PostFooter>
           <Bio />
           <div className="post-links">
