@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "gatsby-portfolio",
+  "alias": ["mm263.space"],
   "builds": [
     {
       "src": "package.json",
