@@ -4,7 +4,8 @@ import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import styled from 'styled-components';
 
 import Bio from '../components/Bio';
-import BigName from '../components/styles/BigName';
+import { Header } from '../components/styles/PostHeader';
+import SEO from '../components/SEO';
 
 const BlogContainer = styled.main`
   margin: 2rem 2rem 0 2rem;
@@ -20,35 +21,6 @@ const BlogContainer = styled.main`
   h5,
   h6 {
     margin-top: 5rem;
-  }
-
-  .post-date {
-    margin: 1rem 1rem 1.3rem 0;
-    font-style: italic;
-    font-weight: 900;
-  }
-
-  .post-title {
-    font-size: 4rem;
-    margin: 2rem 0;
-    text-align: left;
-    &:after {
-      transition: height 0.5s ${({ theme }) => theme.ease},
-        margin-top 0.5s ${({ theme }) => theme.ease};
-      margin-top: ${({ theme }) => (theme.night ? '0' : '1rem')};
-      height: ${({ theme }) => (theme.night ? '4rem' : '2rem')};
-    }
-    a {
-      top: 0.5rem;
-    }
-
-    @media only screen and (max-width: 600px) {
-      .post-title {
-        text-align: left;
-
-        font-size: 2.3rem;
-      }
-    }
   }
 
   @media only screen and (max-width: 800px) {
@@ -77,6 +49,11 @@ const PostFooter = styled.footer`
 
 const StyledArticle = styled.article`
   max-width: 100%;
+  font-family: 'Merriweather', 'Times New Roman', Times, serif;
+
+  img {
+    max-width: 100%;
+  }
 `;
 
 class BlogPostTemplate extends React.Component {
@@ -88,30 +65,42 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext; // eslint-disable-line
 
     return (
-      <BlogContainer>
-        <header>
-          <BigName className="post-title">{mdx.frontmatter.title}</BigName>
-          <small className="post-date">{mdx.frontmatter.date}</small>
-        </header>
-        <StyledArticle>
-          <MDXRenderer>{mdx.code.body}</MDXRenderer>
-        </StyledArticle>
-        <PostFooter>
-          <Bio />
-          <div className="post-links">
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </div>
-        </PostFooter>
-      </BlogContainer>
+      <>
+        <SEO
+          title={mdx.frontmatter.title}
+          description={mdx.frontmatter.spoiler}
+          // slug={mdx.fields.slug}
+        />
+        <BlogContainer>
+          <Header>
+            <h1 className="post-title">{mdx.frontmatter.title}</h1>
+            <div className="underline">
+              <small className="post-date">
+                {mdx.frontmatter.date} • {mdx.timeToRead} min read
+              </small>
+              <div className="separator" />
+            </div>
+          </Header>
+          <StyledArticle>
+            <MDXRenderer>{mdx.code.body}</MDXRenderer>
+          </StyledArticle>
+          <PostFooter>
+            <Bio />
+            <div className="post-links">
+              {previous && (
+                <Link to={previous.fields.slug} rel="prev">
+                  ← {previous.frontmatter.title}
+                </Link>
+              )}
+              {next && (
+                <Link to={next.fields.slug} rel="next">
+                  {next.frontmatter.title} →
+                </Link>
+              )}
+            </div>
+          </PostFooter>
+        </BlogContainer>
+      </>
     );
   }
 }
@@ -127,6 +116,7 @@ export const pageQuery = graphql`
       }
     }
     mdx(fields: { slug: { eq: $slug } }) {
+      timeToRead
       frontmatter {
         title
         date(formatString: "MMM DD, YYYY")

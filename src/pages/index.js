@@ -6,6 +6,7 @@ import { Link as GatsbyLink, graphql } from 'gatsby';
 import Blog from '../components/Blog';
 
 import BigName from '../components/styles/BigName';
+import SEO from '../components/SEO';
 import Contacts from '../components/Contacts';
 import photo from '../../static/photo.png';
 import Download from '../images/download.svg';
@@ -94,6 +95,7 @@ const DownloadIcon = styled(Download)`
 
 const Index = ({ data }) => (
   <>
+    <SEO />
     <MainContainer>
       <MainInfo>
         <header>
@@ -146,10 +148,11 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          excerpt
+          timeToRead
           frontmatter {
             date(formatString: "MMM DD, YYYY")
             title
+            spoiler
           }
         }
       }

@@ -2,7 +2,11 @@ module.exports = {
   siteMetadata: {
     title: `Tony Antonov`,
     author: `Tony Antonov`,
-    description: "Tony's site with blog and portfolio",
+    description: `Tony Antonov's personal blog about frontend`,
+    siteUrl: `https://mm263.space`,
+    social: {
+      twitter: '@tony_antonov',
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -29,7 +33,7 @@ module.exports = {
     {
       resolve: `gatsby-mdx`,
       options: {
-        extensions: [`.mdx`],
+        extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
@@ -40,6 +44,9 @@ module.exports = {
           },
           {
             resolve: `gatsby-remark-copy-linked-files`,
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
           },
         ],
       },
@@ -57,7 +64,7 @@ module.exports = {
             variants: [`400`, `500`, `600`, `700`],
           },
           {
-            family: `Consolas`,
+            family: `Merriweather`,
             variants: [`400`, `700`],
           },
         ],
