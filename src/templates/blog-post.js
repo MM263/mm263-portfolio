@@ -72,7 +72,7 @@ class BlogPostTemplate extends React.Component {
     } = this.props; // eslint-disable-line
     const siteTitle = this.props.data.site.siteMetadata.title; // eslint-disable-line
     const { previous, next } = this.props.pageContext; // eslint-disable-line
-    console.log(this.props);
+
     return (
       <>
         <SEO
