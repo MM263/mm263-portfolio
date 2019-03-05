@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const BigName = styled.h1`
+const StyledBigName = styled.h1`
   font-size: 6rem;
   font-family: 'Permanent Marker';
   color: #393939;
@@ -24,5 +25,9 @@ const BigName = styled.h1`
     transform: skew(-10deg);
   }
 `;
+
+const BigName = (
+  { children, className } // eslint-disable-line
+) => <StyledBigName className={className}>{children}</StyledBigName>;
 
 export default BigName;
