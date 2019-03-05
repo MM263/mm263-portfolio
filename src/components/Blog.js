@@ -10,9 +10,11 @@ const BlogContainer = styled.main`
   & > div:not(:last-child) {
     margin-bottom: 3rem;
   }
+
   & > div:nth-child(2) {
     margin-bottom: 7rem;
   }
+
   h1 {
     margin-bottom: 1rem;
     font-family: 'Permanent Marker';

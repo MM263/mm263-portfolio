@@ -16,18 +16,22 @@ const StyledInput = styled.input`
   ${InputStyles}
 `;
 
+const SmallInputsContainer = styled.div`
+  display: flex;
+`;
+
 const StyledForm = styled.form`
   display: flex;
 
-  & > label {
+  label {
     display: flex;
     flex-direction: column;
     color: #9b9b9b;
     font-family: 'Asap';
+  }
 
-    & > input {
-      ${InputStyles}
-    }
+  input {
+    ${InputStyles}
   }
 
   input::-webkit-outer-spin-button,
@@ -38,6 +42,14 @@ const StyledForm = styled.form`
 
   input[type='number'] {
     -moz-appearance: textfield;
+  }
+
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+
+    & > div {
+      margin-top: 3rem;
+    }
   }
 `;
 
@@ -72,41 +84,41 @@ const CreditCardForm = () => {
   /* eslint-disable jsx-a11y/label-has-for */
   /* eslint-disable jsx-a11y/label-has-associated-control */
   return (
-    <div>
-      <StyledForm>
-        <label style={{ flex: 1 }} htmlFor="number">
-          Card Number
-          <MaskedInput
-            id="number"
-            name="number"
-            className="masked-input"
-            value={number}
-            guide={false}
-            mask={[
-              /\d/,
-              /\d/,
-              /\d/,
-              /\d/,
-              ' ',
-              /\d/,
-              /\d/,
-              /\d/,
-              /\d/,
-              ' ',
-              /\d/,
-              /\d/,
-              /\d/,
-              /\d/,
-              ' ',
-              /\d/,
-              /\d/,
-              /\d/,
-              /\d/,
-            ]}
-            onChange={handleNumberChange}
-            placeholder="0000 0000 0000 0000"
-          />
-        </label>
+    <StyledForm>
+      <label style={{ flex: 1 }} htmlFor="number">
+        Card Number
+        <MaskedInput
+          id="number"
+          name="number"
+          className="masked-input"
+          value={number}
+          guide={false}
+          mask={[
+            /\d/,
+            /\d/,
+            /\d/,
+            /\d/,
+            ' ',
+            /\d/,
+            /\d/,
+            /\d/,
+            /\d/,
+            ' ',
+            /\d/,
+            /\d/,
+            /\d/,
+            /\d/,
+            ' ',
+            /\d/,
+            /\d/,
+            /\d/,
+            /\d/,
+          ]}
+          onChange={handleNumberChange}
+          placeholder="0000 0000 0000 0000"
+        />
+      </label>
+      <SmallInputsContainer>
         <label htmlFor="expiry">
           Expiry Date
           <MaskedInput
@@ -133,8 +145,8 @@ const CreditCardForm = () => {
             ref={cvcRef}
           />
         </label>
-      </StyledForm>
-    </div>
+      </SmallInputsContainer>
+    </StyledForm>
   );
 
   /* eslint-enable jsx-a11y/label-has-for */
