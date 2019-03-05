@@ -9,6 +9,7 @@ import SEO from '../components/SEO';
 
 const BlogContainer = styled.main`
   margin: 2rem 2rem 0 2rem;
+  font-size: 1.6rem;
 
   header {
     margin-bottom: 4rem;
@@ -56,6 +57,14 @@ const StyledArticle = styled.article`
   }
 `;
 
+const SiteHeader = styled.header`
+  a {
+    font-family: 'Permanent Marker', sans-serif;
+    color: ${({ theme }) => theme.text};
+    text-decoration: none;
+  }
+`;
+
 class BlogPostTemplate extends React.Component {
   render() {
     const {
@@ -63,7 +72,7 @@ class BlogPostTemplate extends React.Component {
     } = this.props; // eslint-disable-line
     const siteTitle = this.props.data.site.siteMetadata.title; // eslint-disable-line
     const { previous, next } = this.props.pageContext; // eslint-disable-line
-
+    console.log(this.props);
     return (
       <>
         <SEO
@@ -72,6 +81,11 @@ class BlogPostTemplate extends React.Component {
           // slug={mdx.fields.slug}
         />
         <BlogContainer>
+          <SiteHeader>
+            <h3>
+              <Link to="/">Tony Antonov 🤔</Link>
+            </h3>
+          </SiteHeader>
           <Header>
             <h1 className="post-title">{mdx.frontmatter.title}</h1>
             <div className="underline">

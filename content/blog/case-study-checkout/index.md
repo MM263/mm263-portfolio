@@ -1,12 +1,12 @@
 ---
-title: 'UX↑: Checkout by yosifqassim'
+title: 'UX↑: Checkout Redesign'
 date: '2019-02-21T22:40:34.169Z'
 spoiler: Is it a radio button or a checkbox though?
 ---
 
 import CreditCardForm from '../../../src/components/CreditCardForm.js';
 
-Hi! In UX↑ series I am trying to level up↑ my UX skills by upgrading designs and taking notes on my thought process.
+Hi! In UX↑ series I am trying to level up↑ my UX skills by upgrading designs while describing my thought process.
 
 Today I'll be taking on [/u/yosifqassim](https://www.reddit.com/user/yosifqassim)'s design of a checkout. Take a look!
 
@@ -16,12 +16,12 @@ This is the second iteration of a design by him, but there are still some things
 
 ## Credit Card Form
 
-- First of all, let's tweak the fonts. I find Work Sans a little bit more elegant while keeping the same serious tone. Also, let's keep things consistent - right now it seems to me that checkbox label uses some kind of condensed font and we will change it to Work Sans as well.
-- Let's tone down the boldness a notch. There is no real need to make inputs fields and checkbox label bold.
+- First of all, we need to find a font that is similar to the original as we are working with a picture. Speaking of work, I find Work Sans a little bit more elegant while keeping the same serious tone. Also, let's keep things consistent - right now it seems to me that checkbox label uses some kind of condensed font and we will change it to Work Sans as well.
+- Let's tone down the boldness a notch all over the place. There is no real need to make inputs fields and checkbox label bold.
 - There are some inconsistencies in spacing in input fields. Let's fix that and align input values a little bit more towards the bottom.
-- We also should capitalize second words everywhere, as it is the convention for the English language.
+- We also should capitalize second words everywhere, as it is the most common way to handle titles and buttons in English language.
 
-There is something else that we could do with the form. I really appreciate Stripe's approach of a single line credit card input (try it out, it's interactive):
+There is something else that we could do with the form. I really appreciate Stripe's approach of a single line credit card input where cursor jumps between inputs (try it out, it's interactive):
 
 <CreditCardForm />
 
@@ -55,7 +55,7 @@ In this case, it means that the checkbox should stay a checkbox. Why?
 - The absence of other radio-button-looking elements with this checkbox can look confusing - we don't want that.
 - If one makes another form with the current design and some checkboxes and radio buttons are by chance close to each other squareness and roundness becomes the only distinctive difference between them. This is not good for skimming your page and users usually skim forms before filling it.
 
-<div style={{ display: 'flex', flexDirection:'column' }}>
+<div style={{ userSelect: 'none', display: 'flex', flexDirection:'column' }}>
   <label htmlFor="lonely-radio">
     <input id="lonely-radio" type="radio" value="lonely-radio" />
     I'm a lonely radio-button, I can't be unchecked 😪
@@ -88,7 +88,13 @@ We are finished with moving and removing stuff and now our checkout looks a bit 
 
 First of all, let's expand our background color on the left and change it to a more neutral one. Its current color introduces stark contrast that diverts attention from a form.
 
-The second thing is making the card's background more colorful. Let's use [Trianglify](https://trianglify.io/) to generate an abstract background and to apply blur on top of it. It is now beautiful _and_ useful.
+The second thing is making the card's background more colorful. Let's use [Trianglify](https://trianglify.io/) to generate an abstract background and to apply blur on top of it. It is now beautiful _and_ we made it more useful than just displaying the picture (albeit the pretty one).
+
+So, is my interpretation of this piece of a checkout form objectively better? The answer is a resouding **no**.
+
+The decision behind it is not the matter of how good it looks, how useful it is at all. It is the matter of the research. Previously I mentioned that things can divert said attention from an important target. In our case our goal is user pressing a "Pay Now" button and this poses a question: Would any element in the place of card be detrimental to our goal? This question is pretty simple. We don't know, _unless_ we test it on real users.
+
+Ultimately we shouldn't just make a design and leave it at that. In this case, for example, one could setup an A/B testing environment. It means that we would serve the part of our users the design with a card and some another interpretation of it to others. We pick a success metric, such as number a checkouts and after a period of time compare which design did better. After that one should iterate on a design that won and so on.
 
 ![redesign-progress5](https://i.imgur.com/lqXhAOv.png)
 
@@ -104,4 +110,4 @@ The last thing we did is trimming unnecessary white space because I imagine that
 
 ## Conclusion
 
-It's very important to recognize the importance of iterating when it comes to any creative work. While one can come up with something nice on the first try, there is a chance that you can improve what you did. For example, I am currently writing this conclusion on the day after finishing our final iteration and I already can imagine some things that we could make better (e.g. use of space could use some work). So, taking a break from work helps to look at it with a fresh eye.
+It's very important to recognize the importance of iterating when it comes to any creative work. While one can come up with something nice on the first try, there is a chance that you can improve what you did. For example, I am currently writing this on the day after I finished our final iteration and I already can imagine some things that we could make better (e.g. use of space could use some work, common sense tells me that a new iteration of a card could be more detrimental than a picture). So, taking a break from work helps me to look at it with a fresh eye and I encourage you to do so too. After that, iterate, test and iterate again - this is how I think, that great designs are made.
