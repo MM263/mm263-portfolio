@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import Helmet from 'react-helmet';
@@ -30,11 +30,20 @@ const ContentContainer = styled.div`
 
 const Layout = ({ location, children }) => {
   const date = new Date();
-  const [fun, setFun] = useLocalStorage('emojiFun', true);
-  const [night, setNight] = useLocalStorage(
+
+  const [storedFun, setStoredFun] = useLocalStorage('emojiFun', true);
+  const [storedNight, setStoredNight] = useLocalStorage(
     'siteTheme',
     date.getHours() > 18 || date.getHours() < 5
   );
+
+  const [fun, setFun] = useState(storedFun);
+  const [night, setNight] = useState(storedNight);
+
+  useEffect(() => {
+    setStoredFun(fun);
+    setStoredNight(night);
+  }, [fun, night]);
 
   const theme = {
     text: '#393939',
