@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider, withTheme } from 'styled-components';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -114,4 +114,4 @@ Layout.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export default Layout;
+export default withTheme(Layout);
