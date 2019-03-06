@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Link as GatsbyLink, graphql } from 'gatsby';
 
 import Blog from '../components/Blog';
@@ -12,9 +13,9 @@ import photo from '../../static/photo.png';
 import Download from '../images/download.svg';
 import resume from '../../static/antonov-anton-resume.pdf';
 
-const LinkStyles = css`
+const LinkStyles = ({ theme }) => css`
   font-weight: 700;
-  color: ${({ theme }) => theme.text};
+  color: ${theme.text};
 `;
 
 const MainContainer = styled.div`

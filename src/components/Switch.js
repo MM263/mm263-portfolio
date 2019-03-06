@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const StyledSwitch = styled.div`
   display: flex;
   cursor: pointer;
   user-select: none;
   margin-left: 3rem;
+
   .label {
     position: absolute;
     top: 0;
@@ -16,6 +17,7 @@ const StyledSwitch = styled.div`
     font-size: 2rem;
     line-height: 1.5;
   }
+
   .on-label,
   .off-label {
     position: absolute;
@@ -28,12 +30,15 @@ const StyledSwitch = styled.div`
     font-family: 'Permanent Marker';
     color: #393939;
   }
+
   .on-label {
     right: 11px;
   }
+
   .off-label {
     left: 9px;
   }
+
   .toggle-label {
     position: relative;
     width: 70px;

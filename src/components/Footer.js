@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 
 import Switch from './Switch';
 import GithubIcon from '../images/github.svg';
 
-const styledIcon = css`
+const styledIcon = ({ theme }) => css`
   width: 2.5rem;
   height: 2.5rem;
   padding: 0.4rem;
   border-radius: 50%;
   margin-left: 1rem;
-  background: ${({ theme }) => theme.accentBG};
-  transition: background 0.2s ${({ theme }) => theme.ease};
+  background: ${theme.accentBG};
+  transition: background 0.2s ${theme.ease};
   &:hover {
-    background-color: ${({ theme }) => theme.salmoner};
+    background-color: ${theme.salmoner};
   }
 `;
 

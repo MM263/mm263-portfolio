@@ -1,14 +1,15 @@
 import React, { useState, useRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import MaskedInput from 'react-text-mask';
 
-const InputStyles = css`
+const InputStyles = ({ theme }) => css`
   border: none;
   border-bottom: 3px solid #8b72e5;
   padding: 1rem 0;
   font-size: 1.5rem;
   width: 100%;
-  color: ${({ theme }) => theme.text};
+  color: ${theme.text};
   background: none;
 `;
 

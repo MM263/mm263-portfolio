@@ -1,18 +1,18 @@
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
-const HeaderStyles = css`
+const HeaderStyles = ({ theme }) => css`
   display: flex;
   flex-direction: column;
   width: 100%;
   justify-content: center;
   margin-bottom: 1rem;
-  transition: color 0.5s ${({ theme }) => theme.ease} background 0.5s
-    ${({ theme }) => theme.ease};
+  transition: color 0.5s ${theme.ease} background 0.5s ${theme.ease};
 
   .post-title {
     margin: 0;
     font-family: 'Permanent Marker';
-    color: ${({ theme }) => theme.text};
+    color: ${theme.text};
     line-height: 1;
     font-size: 2.7rem;
     display: block;
@@ -20,7 +20,7 @@ const HeaderStyles = css`
     text-decoration: none;
 
     a {
-      color: ${({ theme }) => theme.text};
+      color: ${theme.text};
       text-decoration: none;
     }
   }
@@ -43,7 +43,7 @@ const HeaderStyles = css`
     flex-shrink: 0;
     width: 100%;
     margin: 1rem 0 1rem 1rem;
-    background: ${({ theme }) => theme.accentBG};
+    background: ${theme.accentBG};
   }
 `;
 
