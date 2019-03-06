@@ -124,8 +124,10 @@ class Canvas extends Component {
     const canvas = this.canvasRef.current;
     const ctx = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    if (typeof window !== `undefined`) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
 
     const { width, height } = canvas;
 
