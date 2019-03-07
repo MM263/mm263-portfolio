@@ -9,6 +9,8 @@ import CloseIcon from '../../static/close.svg';
 
 const HamberderButton = styled.button`
   padding: 1rem;
+  height: 4.4rem;
+  width: 4.4rem;
   background: ${({ theme }) => theme.accentBG};
   position: fixed;
   top: 3rem;
@@ -20,6 +22,7 @@ const HamberderButton = styled.button`
   touch-action: auto;
 
   svg {
+    width: 2rem;
     color: #393939;
   }
 

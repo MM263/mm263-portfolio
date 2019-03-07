@@ -109,8 +109,8 @@ const Index = ({ data }) => (
         <aside>
           <p>
             <Photo src={photo} />
-            Hi, my name is Tony! I'm a self-taught frontend developer from
-            Saskatoon, SK.
+            Hi, my name is Tony! I'm a frontend developer based in Saskatoon,
+            SK.
           </p>
           <p>
             I like all things involving React and it's ecosystem and I love
