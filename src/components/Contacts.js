@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import Info from './styles/InfoLine';
 import TelegramIcon from '../images/telegram.svg';

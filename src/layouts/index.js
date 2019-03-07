@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from '@emotion/styled';
+import { ThemeProvider } from 'emotion-theming';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Footer from '../components/Footer';
+import Footer, { FooterContent } from '../components/Footer';
 import Canvas from '../components/Canvas';
 import Transition from '../components/Transition';
+import Hamburger from '../components/Hamburger';
 import GlobalStyles from '../components/styles/GlobalStyles';
 
 const accent =
@@ -51,63 +53,106 @@ const ContentContainer = styled.div`
   max-width: 100%;
 `;
 
-const Layout = ({ location, children }) => {
-  const [fun, setFun] = useState(true);
-  const [night, setNight] = useState(false);
+class Layout extends React.Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    location: PropTypes.object.isRequired,
+  };
 
-  return (
-    <StaticQuery
-      query={graphql`
-        query SiteTitleQuery {
-          site {
-            siteMetadata {
-              title
+  state = {
+    night: false,
+    fun: true,
+  };
+
+  componentDidMount() {
+    const fun = window.localStorage.getItem('emojiFun');
+    const night = window.localStorage.getItem('nightTheme');
+
+    if (fun != null) {
+      this.setState({ fun: JSON.parse(fun) });
+    }
+
+    if (night != null) {
+      this.setState({ night: JSON.parse(night) });
+    }
+  }
+
+  setFun = () => {
+    const { fun } = this.state;
+
+    window.localStorage.setItem('emojiFun', JSON.stringify(!fun));
+    this.setState({ fun: !fun });
+  };
+
+  setNight = () => {
+    const { night } = this.state;
+
+    window.localStorage.setItem('nightTheme', JSON.stringify(!night));
+    this.setState({ night: !night });
+  };
+
+  render() {
+    const { location, children } = this.props;
+    const { night, fun } = this.state;
+
+    return (
+      <StaticQuery
+        query={graphql`
+          query SiteTitleQuery {
+            site {
+              siteMetadata {
+                title
+              }
             }
           }
-        }
-      `}
-      render={data => (
-        <>
-          <Helmet
-            title={data.site.siteMetadata.title}
-            meta={[
-              {
-                name: 'description',
-                content:
-                  'Tony Antonov - Frontend Web Developer with eyes on the prize ¯\\_(ツ)_/¯',
-              },
-              {
-                name: 'keywords',
-                content:
-                  'Tony Antonov, react developer, react.js developer, react blog, react, frontend, redux, apollo, graphql, git, gatsby, developer, web developer, js developer',
-              },
-            ]}>
-            <html lang="en" />
-          </Helmet>
-          <ThemeProvider theme={night ? darkTheme : theme}>
-            <LayoutContainer>
+        `}
+        render={data => (
+          <>
+            <Helmet
+              title={data.site.siteMetadata.title}
+              meta={[
+                {
+                  name: 'description',
+                  content: 'Tony Antonov - Frontend Developer',
+                },
+                {
+                  name: 'keywords',
+                  content:
+                    'Tony Antonov, react developer, react.js developer, react blog, react, frontend, redux, apollo, graphql, git, gatsby, developer, web developer, js developer',
+                },
+              ]}>
+              <html lang="en" />
+            </Helmet>
+            <ThemeProvider theme={night ? darkTheme : theme}>
               <GlobalStyles />
-              <ContentContainer>
-                <Transition location={location}>{children}</Transition>
-              </ContentContainer>
-              <Footer
-                toggleNight={() => setNight(!night)}
-                toggleFun={() => setFun(!fun)}
-                fun={fun}
-                night={night}
-              />
-              {fun && <Canvas />}
-            </LayoutContainer>
-          </ThemeProvider>
-        </>
-      )}
-    />
-  );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  location: PropTypes.object.isRequired,
-};
+              <LayoutContainer>
+                <ContentContainer>
+                  <Transition location={location}>{children}</Transition>
+                </ContentContainer>
+                <Hamburger>
+                  <FooterContent
+                    toggleNight={this.setNight}
+                    toggleFun={this.setFun}
+                    fun={fun}
+                    night={night}
+                    labelName="mobile-footer"
+                  />
+                </Hamburger>
+                <Footer
+                  toggleNight={this.setNight}
+                  toggleFun={this.setFun}
+                  fun={fun}
+                  night={night}
+                  labelName="footer"
+                />
+                {fun && <Canvas />}
+              </LayoutContainer>
+            </ThemeProvider>
+          </>
+        )}
+      />
+    );
+  }
+}
 
 export default Layout;

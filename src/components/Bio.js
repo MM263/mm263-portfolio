@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import photo from '../../static/photo.png';
 
@@ -24,8 +24,8 @@ const Bio = () => (
       alt="Tony Antonov, me. This is a best shot of me, most times I am just making faces on camera."
     />
     <div>
-      <p>Tony Antonov's personal blog.</p>
-      <p>When I have free time I write about frontend.</p>
+      <p>Tony Antonov's blog</p>
+      <p>Here I am trying to learn in public :)</p>
     </div>
   </BioContainer>
 );

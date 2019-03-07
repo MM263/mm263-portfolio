@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const InfoLine = styled.p`
   color: ${({ theme }) => theme.grey};

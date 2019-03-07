@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Link as GatsbyLink, graphql } from 'gatsby';
 
 import Blog from '../components/Blog';
@@ -12,9 +13,9 @@ import photo from '../../static/photo.png';
 import Download from '../images/download.svg';
 import resume from '../../static/antonov-anton-resume.pdf';
 
-const LinkStyles = css`
+const LinkStyles = ({ theme }) => css`
   font-weight: 700;
-  color: ${({ theme }) => theme.text};
+  color: ${theme.text};
 `;
 
 const MainContainer = styled.div`
@@ -36,10 +37,11 @@ const MainInfo = styled.div`
     h1 {
       font-size: 3rem;
       &:after {
-        margin-top: 0.9rem;
-        height: 1.5rem;
         width: 108%;
         left: calc(0px - 3%);
+        height: ${({ theme }) => (theme.night ? '3rem' : '1.5rem')};
+        background: ${({ theme }) => theme.accentBG};
+        margin-top: ${({ theme }) => (theme.night ? '0' : '0.9rem')};
       }
     }
   }
@@ -107,8 +109,8 @@ const Index = ({ data }) => (
         <aside>
           <p>
             <Photo src={photo} />
-            Hi, my name is Tony! I'm a self-taught frontend developer from
-            Saskatoon, SK.
+            Hi, my name is Tony! I'm a frontend developer based in Saskatoon,
+            SK.
           </p>
           <p>
             I like all things involving React and it's ecosystem and I love

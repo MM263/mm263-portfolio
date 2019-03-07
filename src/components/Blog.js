@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import { HeaderDiv } from './styles/PostHeader';
 
@@ -10,9 +10,11 @@ const BlogContainer = styled.main`
   & > div:not(:last-child) {
     margin-bottom: 3rem;
   }
+
   & > div:nth-child(2) {
     margin-bottom: 7rem;
   }
+
   h1 {
     margin-bottom: 1rem;
     font-family: 'Permanent Marker';

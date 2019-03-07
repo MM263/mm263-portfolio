@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 
 import Switch from './Switch';
 import GithubIcon from '../images/github.svg';
 
-const styledIcon = css`
+const styledIcon = ({ theme }) => css`
   width: 2.5rem;
   height: 2.5rem;
   padding: 0.4rem;
   border-radius: 50%;
   margin-left: 1rem;
-  background: ${({ theme }) => theme.accentBG};
-  transition: background 0.2s ${({ theme }) => theme.ease};
+  background: ${theme.accentBG};
+  transition: background 0.2s ${theme.ease};
   &:hover {
-    background-color: ${({ theme }) => theme.salmoner};
+    background-color: ${theme.salmoner};
   }
 `;
 
@@ -56,6 +57,10 @@ const StyledFooter = styled.footer`
     margin: 0;
     list-style: none;
   }
+
+  @media only screen and (max-width: 801px) {
+    display: none;
+  }
 `;
 
 const LinkButton = styled(Link)`
@@ -74,11 +79,23 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const Footer = ({ toggleFun, toggleNight, night, fun }) => (
-  <StyledFooter>
+const FooterContent = ({ labelName, toggleFun, toggleNight, night, fun }) => (
+  <>
     <div>
-      <Switch label="🤔" name="fun" value={fun} onChange={toggleFun} />
-      <Switch label="🌛" name="night" value={night} onChange={toggleNight} />
+      <Switch
+        label="🤔"
+        labelName={labelName}
+        name="fun"
+        value={fun}
+        onChange={toggleFun}
+      />
+      <Switch
+        label="🌛"
+        labelName={labelName}
+        name="night"
+        value={night}
+        onChange={toggleNight}
+      />
     </div>
     <nav>
       <ul>
@@ -95,14 +112,22 @@ const Footer = ({ toggleFun, toggleNight, night, fun }) => (
         </li>
       </ul>
     </nav>
+  </>
+);
+
+const Footer = props => (
+  <StyledFooter>
+    <FooterContent {...props} />
   </StyledFooter>
 );
 
-Footer.propTypes = {
+FooterContent.propTypes = {
   toggleFun: PropTypes.func.isRequired,
   toggleNight: PropTypes.func.isRequired,
   fun: PropTypes.bool.isRequired,
   night: PropTypes.bool.isRequired,
+  labelName: PropTypes.string.isRequired,
 };
 
+export { FooterContent };
 export default Footer;

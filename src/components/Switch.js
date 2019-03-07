@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const StyledSwitch = styled.div`
   display: flex;
   cursor: pointer;
   user-select: none;
   margin-left: 3rem;
+  z-index: 1100;
+
   .label {
     position: absolute;
     top: 0;
@@ -16,6 +18,7 @@ const StyledSwitch = styled.div`
     font-size: 2rem;
     line-height: 1.5;
   }
+
   .on-label,
   .off-label {
     position: absolute;
@@ -28,18 +31,22 @@ const StyledSwitch = styled.div`
     font-family: 'Permanent Marker';
     color: #393939;
   }
+
   .on-label {
     right: 11px;
   }
+
   .off-label {
     left: 9px;
   }
+
   .toggle-label {
     position: relative;
     width: 70px;
     height: 26px;
     border-radius: 5px;
     background-color: #f5f5f5;
+    z-index: 20000;
 
     & > input {
       width: 0;
@@ -71,6 +78,7 @@ class Switch extends React.PureComponent {
     value: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    labelName: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   };
 
@@ -81,15 +89,15 @@ class Switch extends React.PureComponent {
   };
 
   render() {
-    const { value, label, name } = this.props;
+    const { value, label, name, labelName } = this.props;
 
     return (
       <StyledSwitch checked={value}>
-        <label className="toggle-label" htmlFor={`${name}-toggle`}>
+        <label className="toggle-label" htmlFor={`${name}-${labelName}`}>
           <input
             onChange={this.handleToggle}
             type="checkbox"
-            id={`${name}-toggle`}
+            id={`${name}-${labelName}`}
             value={value}
             aria-checked={value}
           />

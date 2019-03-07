@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import debounce from 'lodash.debounce';
 
 import thinking from '../../static/thinking.png';
@@ -124,8 +124,10 @@ class Canvas extends Component {
     const canvas = this.canvasRef.current;
     const ctx = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    if (typeof window !== `undefined`) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
 
     const { width, height } = canvas;
 
