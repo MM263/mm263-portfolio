@@ -37,10 +37,11 @@ const MainInfo = styled.div`
     h1 {
       font-size: 3rem;
       &:after {
-        margin-top: 0.9rem;
-        height: 1.5rem;
         width: 108%;
         left: calc(0px - 3%);
+        height: ${({ theme }) => (theme.night ? '3rem' : '1.5rem')};
+        background: ${({ theme }) => theme.accentBG};
+        margin-top: ${({ theme }) => (theme.night ? '0' : '0.9rem')};
       }
     }
   }

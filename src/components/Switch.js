@@ -7,6 +7,7 @@ const StyledSwitch = styled.div`
   cursor: pointer;
   user-select: none;
   margin-left: 3rem;
+  z-index: 1100;
 
   .label {
     position: absolute;
@@ -45,6 +46,7 @@ const StyledSwitch = styled.div`
     height: 26px;
     border-radius: 5px;
     background-color: #f5f5f5;
+    z-index: 20000;
 
     & > input {
       width: 0;
@@ -76,6 +78,7 @@ class Switch extends React.PureComponent {
     value: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    labelName: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   };
 
@@ -86,15 +89,15 @@ class Switch extends React.PureComponent {
   };
 
   render() {
-    const { value, label, name } = this.props;
+    const { value, label, name, labelName } = this.props;
 
     return (
       <StyledSwitch checked={value}>
-        <label className="toggle-label" htmlFor={`${name}-toggle`}>
+        <label className="toggle-label" htmlFor={`${name}-${labelName}`}>
           <input
             onChange={this.handleToggle}
             type="checkbox"
-            id={`${name}-toggle`}
+            id={`${name}-${labelName}`}
             value={value}
             aria-checked={value}
           />

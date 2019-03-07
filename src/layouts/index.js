@@ -5,9 +5,10 @@ import { ThemeProvider } from 'emotion-theming';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Footer from '../components/Footer';
+import Footer, { FooterContent } from '../components/Footer';
 import Canvas from '../components/Canvas';
 import Transition from '../components/Transition';
+import Hamburger from '../components/Hamburger';
 import GlobalStyles from '../components/styles/GlobalStyles';
 
 const accent =
@@ -128,11 +129,21 @@ class Layout extends React.Component {
                 <ContentContainer>
                   <Transition location={location}>{children}</Transition>
                 </ContentContainer>
+                <Hamburger>
+                  <FooterContent
+                    toggleNight={this.setNight}
+                    toggleFun={this.setFun}
+                    fun={fun}
+                    night={night}
+                    labelName="mobile-footer"
+                  />
+                </Hamburger>
                 <Footer
                   toggleNight={this.setNight}
                   toggleFun={this.setFun}
                   fun={fun}
                   night={night}
+                  labelName="footer"
                 />
                 {fun && <Canvas />}
               </LayoutContainer>
