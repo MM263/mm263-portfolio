@@ -61,7 +61,7 @@ class Layout extends React.Component {
 
   state = {
     night: false,
-    fun: true,
+    fun: false,
   };
 
   componentDidMount() {
