@@ -80,7 +80,7 @@ PayPal offers only one way to use it on your website - via a popup that is calle
 
 Maybe the best way to use PayPal would be to make a step before this one, where user chooses how they want to pay. So, for now, we replace big radio buttons with a simple header and assume that user selected credit card checkout on the previous screen.
 
-One last thing for the current iteration is making the picture of a card more useful. Right now its only function is to, maybe, remind user that they are going to buy something. Let's make it useful by displaying user inputs on it. That means that we must get rid of tilt for time being, but don't worry, we'll get creative with dimensions a bit later.
+One last thing for the current iteration is making the picture of a card more useful. Right now its only function is to, maybe, remind user that they are going to buy something. Let's make it useful by displaying user inputs on it. That means that we must get rid of tilt, unfortunately.
 
 ![redesign-progress4](https://i.imgur.com/RC0fsVg.png)
 
@@ -90,13 +90,15 @@ First of all, let's expand our background color on the left and change it to a m
 
 The second thing is making the card's background more colorful. Let's use [Trianglify](https://trianglify.io/) to generate an abstract background and to apply blur on top of it. It is now beautiful _and_ we made it more useful than just displaying the picture (albeit the pretty one).
 
+![redesign-progress5](https://i.imgur.com/lqXhAOv.png)
+
 So, is my interpretation of this piece of a checkout form objectively better? The answer is a resouding **no**.
 
 The decision behind it is not the matter of how good it looks, how useful it is at all. It is the matter of the research. Previously I mentioned that things can divert said attention from an important target. In our case our goal is user pressing a "Pay Now" button and this poses a question: Would any element in the place of card be detrimental to our goal? This question is pretty simple. We don't know, _unless_ we test it on real users.
 
 Ultimately we shouldn't just make a design and leave it at that. In this case, for example, one could setup an A/B testing environment. It means that we would serve the part of our users the design with a card and some another interpretation of it to others. We pick a success metric, such as number a checkouts and after a period of time compare which design did better. After that one should iterate on a design that won and so on.
 
-![redesign-progress5](https://i.imgur.com/lqXhAOv.png)
+Moving on.
 
 Now, we can clearly distinguish interactive and important elements on the page. However, there is one more thing left for us to tweak. We assumed that the user selected a credit card checkout earlier, so this form has a few steps. That is why I think the stepper would be appropriate to indicate where we are and how many steps are left while filling empty space of the form at the top.
 
