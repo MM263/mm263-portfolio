@@ -3,7 +3,7 @@
 Stack behind this:
 
 - Gatsby
-- styled-components
+- Emotion
 - MDX
 - Some animation on canvas
 - Deployed to Now
