@@ -31,6 +31,7 @@
     "gatsby-remark-images": "^3.0.6",
     "gatsby-source-filesystem": "^2.0.23",
     "gatsby-transformer-sharp": "^2.1.15",
+    "lodash.clamp": "^4.0.3",
     "lodash.debounce": "^4.0.8",
     "prism-react-renderer": "^0.1.6",
     "prop-types": "^15.6.2",
@@ -39,7 +40,8 @@
     "react-helmet": "^5.2.0",
     "react-spring": "^8.0.11",
     "react-text-mask": "^5.4.3",
-    "react-transition-group": "^2.6.0"
+    "react-transition-group": "^2.6.0",
+    "react-with-gesture": "^4.0.6"
   },
   "keywords": [
     "gatsby"

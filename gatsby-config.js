@@ -77,5 +77,12 @@ module.exports = {
     `gatsby-plugin-react-svg`,
     `gatsby-plugin-layout`,
     `gatsby-plugin-eslint`,
+    // {
+    //   resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+    //   options: {
+    //     analyzerPort: 8888,
+    //     production: true,
+    //   },
+    // },
   ],
 };
