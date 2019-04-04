@@ -5,9 +5,20 @@ import { useGesture } from 'react-with-gesture';
 import clamp from 'lodash.clamp';
 
 import LikeIcon from '../../../static/round-favorite-24px.svg';
-import DislikeIcon from '../../../static/round-favorite_border-24px.svg';
+import DislikeIcon from '../../../static/round-broken-heart-24px.svg';
 
 const AnimHeart = animated.div;
+
+const icon = css`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -68,19 +79,15 @@ function Counter() {
   return (
     <animated.div
       {...bind(count)}
-      css={({ night }) => css`
+      css={css`
         width: 6rem;
         height: 6rem;
-        background: ${night ? 'white' : '#393939'};
         border-radius: 50%;
-        cursor: -webkit-grab;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: red;
-        box-shadow: 0 1px 9px 1px rgba(0, 0, 0, 0.15);
-        position: relative;
-        z-index: 1;
+        touch-action: none;
+        z-index: 2;
       `}
       style={{
         transform: xy.interpolate((x, y) => `translateY(${y}px)`),
@@ -124,16 +131,7 @@ function Counter() {
           />
         </AnimHeart>
         <AnimHeart
-          css={css`
-            height: 100%;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-          `}
+          css={icon}
           style={{
             transform: like.interpolate(i => `scale(${i})`),
           }}>
@@ -148,46 +146,21 @@ function Counter() {
           />
         </AnimHeart>
         <AnimHeart
-          css={css`
-            height: 100%;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-          `}
+          css={icon}
           style={{
             transform: dislike.interpolate(i => `scale(${i})`),
           }}>
           <DislikeIcon
-            css={css`
-              height: 3rem;
-              width: 3rem;
+            css={theme => css`
+              height: 2.6rem;
+              width: 2.6rem;
               z-index: 3;
-              color: white;
+              color: ${!theme.night ? 'white' : '#393939'};
               user-select: none;
             `}
           />
         </AnimHeart>
       </div>
-      <animated.div
-        css={css`
-          position: absolute;
-          background-color: hotpink;
-          border-radius: 50%;
-          width: 6rem;
-          height: 6rem;
-          opacity: 0.4;
-          z-index: 2;
-        `}
-        style={{
-          transform: xy.interpolate(
-            (x, y) => `scale(${(clamp(Math.abs(y), 0, 30) / 30).toFixed(2)})`
-          ),
-        }}
-      />
       {countTransition.map(({ item, key, props: style }) => (
         <animated.p
           key={key}

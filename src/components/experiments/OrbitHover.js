@@ -11,6 +11,7 @@ const Main = styled.div`
   border: 4px solid ${({ theme }) => (theme.night ? 'white' : '#393939')};
   border-radius: 50%;
   position: relative;
+  z-index: 2;
 `;
 
 const AnimInner = animated.div;
@@ -26,7 +27,7 @@ const Inner = styled(AnimInner)`
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 0;
+  z-index: 1;
 `;
 
 const rotation = keyframes`
@@ -45,6 +46,7 @@ const Ring = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  z-index: 2;
   height: ${({ dimensions }) => dimensions}px;
   width: ${({ dimensions }) => dimensions}px;
 `;
@@ -110,7 +112,6 @@ function OrbitHover() {
                   )}
                   strokeLinecap="round"
                   strokeWidth={stroke}
-                  // strokeWidth="10"
                   fill="none"
                 />
               </animated.svg>
@@ -135,7 +136,6 @@ function OrbitHover() {
                   )}
                   strokeLinecap="round"
                   strokeWidth={stroke}
-                  // strokeWidth="10"
                   fill="none"
                 />
               </animated.svg>
@@ -143,6 +143,21 @@ function OrbitHover() {
           </React.Fragment>
         );
       })}
+      <div
+        css={theme => css`
+          background-color: ${theme.night ? 'white' : '#393939'};
+          opacity: 0.2;
+          height: 16rem;
+          width: 16rem;
+          border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 0;
+          transform: translate(-38%, -38%);
+          pointer-events: none;
+        `}
+      />
     </Main>
   );
 }
