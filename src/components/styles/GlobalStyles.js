@@ -18,6 +18,7 @@ const GlobalStyles = ({ theme }) => (
       }
 
       body {
+        overscroll-behavior: none;
         padding: 0;
         margin: 0;
         font-size: 1.5rem;
