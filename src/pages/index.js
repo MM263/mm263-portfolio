@@ -23,6 +23,7 @@ const MainContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 const MainInfo = styled.div`
@@ -71,7 +72,7 @@ const PortfolioLink = styled(GatsbyLink)`
   ${LinkStyles}
 `;
 
-const ResumeLink = styled.a`
+const Link = styled.a`
   ${LinkStyles}
 `;
 
@@ -93,6 +94,17 @@ const DownloadIcon = styled(Download)`
     height: 1.3rem;
     margin: 0 5px -2px 0;
   }
+`;
+
+const BlogNotice = styled.p`
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 1rem;
+  opacity: 0.5;
 `;
 
 const Index = ({ data }) => (
@@ -117,14 +129,23 @@ const Index = ({ data }) => (
             staying on top of JS trends. Check out my{' '}
             <PortfolioLink to="/portfolio">portfolio</PortfolioLink> or download
             my{' '}
-            <ResumeLink href={resume} download>
+            <Link href={resume} download>
               <DownloadIcon />
               resume
-            </ResumeLink>
-            . If you like what you see, I am currently looking for a job. Let's
-            talk!
+            </Link>
+            . I am currently working with amazing folks at{' '}
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.7shifts.com/">
+              7shifts
+            </Link>
+            !
           </p>
         </aside>
+        <BlogNotice>
+          *Also I have a small blog, scroll down to read it :^)
+        </BlogNotice>
       </MainInfo>
     </MainContainer>
     <Blog data={data} />

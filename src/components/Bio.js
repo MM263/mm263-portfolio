@@ -21,11 +21,11 @@ const Bio = () => (
   <BioContainer>
     <img
       src={photo}
-      alt="Tony Antonov, me. This is a best shot of me, most times I am just making faces on camera."
+      alt="Tony Antonov, me. This is a best shot of me, most of the time I am just making faces on camera."
     />
     <div>
       <p>Tony Antonov's blog</p>
-      <p>Here I am trying to learn in public :)</p>
+      <p>A blog I made for myself to try to learn in public.</p>
     </div>
   </BioContainer>
 );

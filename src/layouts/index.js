@@ -60,11 +60,12 @@ class Layout extends React.Component {
   };
 
   state = {
-    night: false,
-    fun: false,
+    night: true,
+    fun: false, // "emoji snow"
   };
 
   componentDidMount() {
+    // set the values set in local storage
     const fun = window.localStorage.getItem('emojiFun');
     const night = window.localStorage.getItem('nightTheme');
 

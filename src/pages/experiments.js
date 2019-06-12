@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useSpring, animated } from 'react-spring';
 
 import Experiment from '../components/Experiment';
 import OrbitHover from '../components/experiments/OrbitHover';

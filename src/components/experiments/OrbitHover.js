@@ -143,21 +143,6 @@ function OrbitHover() {
           </React.Fragment>
         );
       })}
-      <div
-        css={theme => css`
-          background-color: ${theme.night ? 'white' : '#393939'};
-          opacity: 0.2;
-          height: 16rem;
-          width: 16rem;
-          border-radius: 5px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 0;
-          transform: translate(-38%, -38%);
-          pointer-events: none;
-        `}
-      />
     </Main>
   );
 }
