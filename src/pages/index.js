@@ -68,10 +68,6 @@ const Photo = styled.img`
   }
 `;
 
-const PortfolioLink = styled(GatsbyLink)`
-  ${LinkStyles}
-`;
-
 const Link = styled.a`
   ${LinkStyles}
 `;
@@ -121,19 +117,19 @@ const Index = ({ data }) => (
         <aside>
           <p>
             <Photo src={photo} />
-            Hi, my name is Tony! I'm a frontend developer based in Saskatoon,
+            Hi, my name is Tony! I'm a developer currently working in Saskatoon,
             SK.
           </p>
           <p>
-            I like all things involving React and it's ecosystem and I love
-            staying on top of JS trends. Check out my{' '}
-            <PortfolioLink to="/portfolio">portfolio</PortfolioLink> or download
-            my{' '}
+            I do DX, cool frontend stuff, and Rust. Check out my{' '}
             <Link href={resume} download>
               <DownloadIcon />
               resume
             </Link>
-            . I am currently working with amazing folks at{' '}
+            , scroll down to read my blog or shoot me a message.
+          </p>
+          <p>
+            I am currently working with amazing folks at{' '}
             <Link
               target="_blank"
               rel="noopener noreferrer"

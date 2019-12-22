@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { HeaderDiv } from './styles/PostHeader';
 
 const BlogContainer = styled.main`
-  margin: 0 2.3rem 4rem 2.3rem;
+  margin: 5rem 2.3rem 4rem 2.3rem;
 
   & > div:not(:last-child) {
     margin-bottom: 3rem;

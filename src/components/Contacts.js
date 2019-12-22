@@ -34,7 +34,7 @@ const Contacts = () => (
     </Info>
     <Info>
       <MailIcon />
-      <a href="mailto:aa.263@tutanota.com">aa.263@tutanota.com</a>
+      <a href="mailto:mm263@protonmail.com">mm263@protonmail.com</a>
     </Info>
     <Info>
       <TelegramIcon />
