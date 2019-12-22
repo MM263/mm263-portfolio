@@ -76,8 +76,8 @@ class BlogPostTemplate extends React.Component {
     return (
       <>
         <SEO
-          title={mdx.frontmatter.title}
-          description={mdx.frontmatter.spoiler}
+          title={mdx.frontmatter.title}// eslint-disable-line
+          description={mdx.frontmatter.spoiler}// eslint-disable-line
           // slug={mdx.fields.slug}
         />
         <BlogContainer>
@@ -87,28 +87,31 @@ class BlogPostTemplate extends React.Component {
             </h3>
           </SiteHeader>
           <Header>
+            {/* eslint-disable-next-line */}
             <h1 className="post-title">{mdx.frontmatter.title}</h1>
             <div className="underline">
               <small className="post-date">
+                {/* eslint-disable-next-line */}
                 {mdx.frontmatter.date} • {mdx.timeToRead} min read
               </small>
               <div className="separator" />
             </div>
           </Header>
           <StyledArticle>
+            {/* eslint-disable-next-line */}
             <MDXRenderer>{mdx.code.body}</MDXRenderer>
           </StyledArticle>
           <PostFooter>
             <Bio />
             <div className="post-links">
               {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
+                <Link to={previous.fields.slug} rel="prev"> {/* eslint-disable-line */}
+                  ← {previous.frontmatter.title} {/* eslint-disable-line */}
                 </Link>
               )}
               {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
+                <Link to={next.fields.slug} rel="next"> {/* eslint-disable-line */}
+                  {next.frontmatter.title} → {/* eslint-disable-line */}
                 </Link>
               )}
             </div>
