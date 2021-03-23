@@ -17,6 +17,9 @@ const TransitionDiv = styled.div`
     transition-property: none;
     transform: translateX(0px);
   }
+
+  height: 100%;
+  width: 100%;
 `;
 
 class Transition extends React.PureComponent {
