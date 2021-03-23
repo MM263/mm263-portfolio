@@ -34,12 +34,15 @@ const Contacts = () => (
     </Info>
     <Info>
       <MailIcon />
-      <a href="mailto:mm263@protonmail.com">mm263@protonmail.com</a>
+      <a href="mailto:tony@mm263.space">tony@mm263.space</a>
     </Info>
     <Info>
       <TelegramIcon />
-      <a target="_blank" rel="noopener noreferrer" href="https://t.me/birdhaus">
-        @Birdhaus
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://t.me/yung_fisher">
+        @yung_fisher
       </a>
     </Info>
   </AboutHeader>

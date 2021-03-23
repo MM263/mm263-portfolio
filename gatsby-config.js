@@ -52,22 +52,14 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Permanent Marker`,
-            variants: [`400`],
-          },
-          {
-            family: `Asap`,
-            variants: [`400`, `500`, `600`, `700`],
-          },
-          {
-            family: `Merriweather`,
-            variants: [`400`, `700`],
-          },
+          `permanent marker\:400`,
+          `asap\:400,500,600,700`,
+          `merriweather\:300,700`,
         ],
+        display: 'swap',
       },
     },
     `gatsby-transformer-sharp`,
