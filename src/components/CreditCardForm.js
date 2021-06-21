@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import MaskedInput from 'react-text-mask';
 
 const InputStyles = ({ theme }) => css`
@@ -62,7 +62,7 @@ const CreditCardForm = () => {
   const expiryRef = useRef();
   const cvcRef = useRef();
 
-  const handleNumberChange = e => {
+  const handleNumberChange = (e) => {
     const { value } = e.target;
 
     setNumber(e.target.value);
@@ -72,7 +72,7 @@ const CreditCardForm = () => {
     }
   };
 
-  const handleExpiryChange = e => {
+  const handleExpiryChange = (e) => {
     const { value } = e.target;
 
     setExpiry(e.target.value);
@@ -141,7 +141,7 @@ const CreditCardForm = () => {
             name="cvc"
             value={cvc}
             type="number"
-            onChange={e => setCvc(e.target.value)}
+            onChange={(e) => setCvc(e.target.value)}
             placeholder="123"
             ref={cvcRef}
           />

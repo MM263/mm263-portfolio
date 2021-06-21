@@ -22,7 +22,7 @@ const query = graphql`
 const SEO = ({ meta, image, title, description, slug }) => (
   <StaticQuery
     query={query}
-    render={data => {
+    render={(data) => {
       const { siteMetadata } = data.site;
       const metaDescription = description || siteMetadata.description;
       const metaImage = image ? `${siteMetadata.siteUrl}/${image}` : null;

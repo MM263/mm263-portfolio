@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Global, css } from '@emotion/core';
-import { withTheme } from 'emotion-theming';
+import { withTheme, Global, css } from '@emotion/react';
 
 const GlobalStyles = ({ theme }) => (
   <Global

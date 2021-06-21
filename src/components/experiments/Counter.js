@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { useSpring, useTransition, animated, config } from 'react-spring';
 import { useGesture } from 'react-with-gesture';
 import clamp from 'lodash.clamp';
@@ -93,7 +93,7 @@ function Counter() {
         transform: xy.interpolate((x, y) => `translateY(${y}px)`),
       }}>
       <div
-        css={theme => css`
+        css={(theme) => css`
           height: 100%;
           width: 100%;
           overflow: hidden;
@@ -119,7 +119,7 @@ function Counter() {
             justify-content: center;
           `}
           style={{
-            transform: initial.interpolate(i => `scale(${i})`),
+            transform: initial.interpolate((i) => `scale(${i})`),
           }}>
           <LikeIcon
             css={css`
@@ -133,7 +133,7 @@ function Counter() {
         <AnimHeart
           css={icon}
           style={{
-            transform: like.interpolate(i => `scale(${i})`),
+            transform: like.interpolate((i) => `scale(${i})`),
           }}>
           <LikeIcon
             css={css`
@@ -148,10 +148,10 @@ function Counter() {
         <AnimHeart
           css={icon}
           style={{
-            transform: dislike.interpolate(i => `scale(${i})`),
+            transform: dislike.interpolate((i) => `scale(${i})`),
           }}>
           <DislikeIcon
-            css={theme => css`
+            css={(theme) => css`
               height: 2.6rem;
               width: 2.6rem;
               z-index: 3;
@@ -166,9 +166,9 @@ function Counter() {
           key={key}
           style={{
             zIndex: '-1',
-            transform: style.transform.interpolate(i => `translateX(${i}px)`),
+            transform: style.transform.interpolate((i) => `translateX(${i}px)`),
           }}
-          css={theme => css`
+          css={(theme) => css`
             position: absolute;
             top: 2px;
             right: -2rem;

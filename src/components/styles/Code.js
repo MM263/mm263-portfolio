@@ -53,7 +53,7 @@ const InlineCode = (
       <StyledInline
         className={className}
         style={{ ...style, display: 'inline' }}>
-        {tokens.map(line =>
+        {tokens.map((line) =>
           line.map((token, key) => (
             <span key="fake-key" {...getTokenProps({ token, key })} />
           ))

@@ -37,7 +37,9 @@ class Transition extends React.PureComponent {
           exit={false}
           key={location.pathname}
           timeout={{ enter: 0 }}>
-          {status => <TransitionDiv status={status}>{children}</TransitionDiv>}
+          {(status) => (
+            <TransitionDiv status={status}>{children}</TransitionDiv>
+          )}
         </ReactTransition>
       </TransitionGroup>
     );

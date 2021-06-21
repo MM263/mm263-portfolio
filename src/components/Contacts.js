@@ -2,14 +2,13 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import Info from './styles/InfoLine';
-import TelegramIcon from '../images/telegram.svg';
 import MailIcon from '../images/mail.svg';
-import LinkedInIcon from '../images/linkedin.svg';
+import GithubIcon from '../images/github.svg';
 
 const AboutHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 1.3rem;
   flex-wrap: wrap;
 
@@ -24,26 +23,17 @@ const AboutHeader = styled.div`
 const Contacts = () => (
   <AboutHeader>
     <Info>
-      <LinkedInIcon />
+      <GithubIcon />
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.linkedin.com/in/tony-antonov/">
-        tony-antonov
+        href="https://github.com/mm263">
+        mm263
       </a>
     </Info>
     <Info>
       <MailIcon />
       <a href="mailto:tony@mm263.space">tony@mm263.space</a>
-    </Info>
-    <Info>
-      <TelegramIcon />
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://t.me/yung_fisher">
-        @yung_fisher
-      </a>
     </Info>
   </AboutHeader>
 );

@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Footer, { FooterContent } from '../components/Footer';
-import Canvas from '../components/Canvas';
 import Transition from '../components/Transition';
-import Hamburger from '../components/Hamburger';
 import GlobalStyles from '../components/styles/GlobalStyles';
 
 const accent =
@@ -54,11 +51,6 @@ const ContentContainer = styled.div`
 `;
 
 class Layout extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    location: PropTypes.object.isRequired,
-  };
-
   state = {
     night: true,
     fun: false, // "emoji snow"
@@ -94,7 +86,7 @@ class Layout extends React.Component {
 
   render() {
     const { location, children } = this.props;
-    const { night, fun } = this.state;
+    const { night } = this.state;
 
     return (
       <StaticQuery
@@ -107,7 +99,7 @@ class Layout extends React.Component {
             }
           }
         `}
-        render={data => (
+        render={(data) => (
           <>
             <Helmet
               title={data.site.siteMetadata.title}
@@ -130,23 +122,6 @@ class Layout extends React.Component {
                 <ContentContainer>
                   <Transition location={location}>{children}</Transition>
                 </ContentContainer>
-                <Hamburger>
-                  <FooterContent
-                    toggleNight={this.setNight}
-                    toggleFun={this.setFun}
-                    fun={fun}
-                    night={night}
-                    labelName="mobile-footer"
-                  />
-                </Hamburger>
-                <Footer
-                  toggleNight={this.setNight}
-                  toggleFun={this.setFun}
-                  fun={fun}
-                  night={night}
-                  labelName="footer"
-                />
-                {fun && <Canvas />}
               </LayoutContainer>
             </ThemeProvider>
           </>
@@ -155,5 +130,10 @@ class Layout extends React.Component {
     );
   }
 }
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired,
+};
 
 export default Layout;

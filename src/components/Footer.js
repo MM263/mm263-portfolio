@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { Link } from 'gatsby';
+import { css } from '@emotion/react';
 
+import Info from './styles/InfoLine';
 import Switch from './Switch';
 import GithubIcon from '../images/github.svg';
+import MailIcon from '../images/mail.svg';
 
 const styledIcon = ({ theme }) => css`
   width: 2.5rem;
@@ -63,20 +64,10 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const LinkButton = styled(Link)`
-  color: #393939;
-  font-family: 'Permanent Marker';
-  font-size: 1.5rem;
-  line-height: 1.5;
-  text-decoration: none;
-  border-radius: 15px;
-  padding: 0.1rem 1rem;
-  background: ${({ theme }) => theme.accentBG};
-  transition: background 0.2s;
-  height: auto;
-  &:hover {
-    background-color: ${({ theme }) => theme.salmoner};
-  }
+const List = styled.li`
+  list-style-type: none;
+  display: flex;
+  align-items: center;
 `;
 
 const FooterContent = ({ labelName, toggleFun, toggleNight, night, fun }) => (
@@ -97,25 +88,10 @@ const FooterContent = ({ labelName, toggleFun, toggleNight, night, fun }) => (
         onChange={toggleNight}
       />
     </div>
-    <nav>
-      <ul>
-        <li>
-          <LinkButton to="/portfolio">Portfolio</LinkButton>
-        </li>
-        <li>
-          <IconLink
-            href="https://github.com/mm263"
-            target="_blank"
-            rel="noopener noreferrer">
-            <Github aria-label="Github" />
-          </IconLink>
-        </li>
-      </ul>
-    </nav>
   </>
 );
 
-const Footer = props => (
+const Footer = (props) => (
   <StyledFooter>
     <FooterContent {...props} />
   </StyledFooter>

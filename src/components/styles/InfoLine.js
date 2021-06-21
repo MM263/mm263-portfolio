@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 const InfoLine = styled.p`
   color: ${({ theme }) => theme.grey};
   font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
   svg {
     height: 1.3rem;
     width: 1.3rem;

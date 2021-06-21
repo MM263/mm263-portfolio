@@ -142,7 +142,7 @@ class Canvas extends Component {
       }
     });
 
-    this.particles.forEach(particle => {
+    this.particles.forEach((particle) => {
       particle.render();
     });
 

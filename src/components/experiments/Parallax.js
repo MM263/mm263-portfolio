@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useSpring, animated, config } from 'react-spring';
-import { keyframes, css } from '@emotion/core';
+import { keyframes, css } from '@emotion/react';
 
 const Parallax = () => {
   const card = useRef();
@@ -51,10 +51,8 @@ const Parallax = () => {
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url(
-              https://images.unsplash.com/photo-1547968196-230ad3b7cbf7?dpr=2&auto=compress,
-              format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=
-            );
+            background-image: url(https://images.unsplash.com/photo-1547968196-230ad3b7cbf7?dpr=2&auto=compress,
+              format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=);
             flex-shrink: 0;
             position: absolute;
             top: -10%;

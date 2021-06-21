@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { keyframes, css } from '@emotion/core';
+import { keyframes, css } from '@emotion/react';
 import { useSpring, animated } from 'react-spring';
 
 import { describeArc } from '../../utils';
@@ -84,7 +84,7 @@ function OrbitHover() {
       <Inner
         style={{
           willChange: 'transform',
-          transform: size.interpolate(i => `scale(${i})`),
+          transform: size.interpolate((i) => `scale(${i})`),
         }}
       />
       {rings.map((ring, i) => {
@@ -101,7 +101,7 @@ function OrbitHover() {
                 `}>
                 <animated.path
                   stroke="red"
-                  d={radius.interpolate(r =>
+                  d={radius.interpolate((r) =>
                     describeArc(
                       ring / 2,
                       ring / 2,
@@ -125,7 +125,7 @@ function OrbitHover() {
                 `}>
                 <animated.path
                   stroke="red"
-                  d={radius.interpolate(r =>
+                  d={radius.interpolate((r) =>
                     describeArc(
                       ring / 2,
                       ring / 2,

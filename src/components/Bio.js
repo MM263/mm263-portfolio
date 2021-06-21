@@ -21,7 +21,7 @@ const Bio = () => (
   <BioContainer>
     <img
       src={photo}
-      alt="Tony Antonov, me. This is a best shot of me, most of the time I am just making faces on camera."
+      alt="Tony Antonov, me. This is the best shot of me, most of the time I am just making faces on camera."
     />
     <div>
       <p>Tony Antonov's blog</p>
